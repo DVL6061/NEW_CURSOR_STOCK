@@ -1,0 +1,190 @@
+2025-09-09 20:03:09,242 | INFO | __main__:run_full_training:296 - Starting full model training pipeline...
+2025-09-09 20:03:09,243 | INFO | __main__:prepare_training_data:43 - Preparing training data...
+2025-09-09 20:03:09,243 | INFO | __main__:prepare_training_data:47 - Fetching data for TATAMOTORS.NS...
+2025-09-09 20:03:09,261 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:107 - Fetching OHLCV data for TATAMOTORS.NS (5y, 1d)
+2025-09-09 20:03:17,678 | ERROR | src.data.yahoo_finance:_cache_ohlcv_data:261 - Error caching OHLCV data for TATAMOTORS.NS: table ohlcv_data has no column named dividends
+2025-09-09 20:03:17,686 | INFO | src.data.yahoo_finance:fetch_fundamental_data:147 - Fetching fundamental data for TATAMOTORS.NS
+2025-09-09 20:03:18,735 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-09 20:03:18,736 | INFO | __main__:prepare_training_data:69 - Data prepared for TATAMOTORS.NS: 1239 samples
+2025-09-09 20:03:18,736 | INFO | __main__:prepare_training_data:47 - Fetching data for RELIANCE.NS...
+2025-09-09 20:03:18,741 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:107 - Fetching OHLCV data for RELIANCE.NS (5y, 1d)
+2025-09-09 20:03:19,043 | ERROR | src.data.yahoo_finance:_cache_ohlcv_data:261 - Error caching OHLCV data for RELIANCE.NS: table ohlcv_data has no column named dividends
+2025-09-09 20:03:19,046 | INFO | src.data.yahoo_finance:fetch_fundamental_data:147 - Fetching fundamental data for RELIANCE.NS
+2025-09-09 20:03:19,913 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-09 20:03:19,913 | INFO | __main__:prepare_training_data:69 - Data prepared for RELIANCE.NS: 1239 samples
+2025-09-09 20:03:19,914 | INFO | __main__:prepare_training_data:47 - Fetching data for TCS.NS...
+2025-09-09 20:03:19,918 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:107 - Fetching OHLCV data for TCS.NS (5y, 1d)
+2025-09-09 20:03:20,399 | ERROR | src.data.yahoo_finance:_cache_ohlcv_data:261 - Error caching OHLCV data for TCS.NS: table ohlcv_data has no column named dividends
+2025-09-09 20:03:20,403 | INFO | src.data.yahoo_finance:fetch_fundamental_data:147 - Fetching fundamental data for TCS.NS
+2025-09-09 20:03:21,356 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-09 20:03:21,357 | INFO | __main__:prepare_training_data:69 - Data prepared for TCS.NS: 1239 samples
+2025-09-09 20:03:21,357 | INFO | __main__:prepare_training_data:75 - Training data prepared for 3 symbols
+2025-09-09 20:03:21,358 | INFO | __main__:train_xgboost_model:79 - Training XGBoost model...
+2025-09-09 20:03:21,503 | INFO | src.models.xgboost_model:prepare_features:122 - Prepared 142 features for 1238 samples
+2025-09-09 20:03:21,504 | INFO | __main__:train_xgboost_model:95 - Prepared 1238 samples for TATAMOTORS.NS
+2025-09-09 20:03:21,652 | INFO | src.models.xgboost_model:prepare_features:122 - Prepared 142 features for 1238 samples
+2025-09-09 20:03:21,653 | INFO | __main__:train_xgboost_model:95 - Prepared 1238 samples for RELIANCE.NS
+2025-09-09 20:03:22,045 | INFO | src.models.xgboost_model:prepare_features:122 - Prepared 142 features for 1238 samples
+2025-09-09 20:03:22,046 | INFO | __main__:train_xgboost_model:95 - Prepared 1238 samples for TCS.NS
+2025-09-09 20:03:22,060 | INFO | __main__:train_xgboost_model:106 - Combined training data: 3714 samples
+2025-09-09 20:03:22,061 | INFO | src.models.xgboost_model:train:270 - Starting XGBoost model training...
+2025-09-09 20:03:22,226 | ERROR | src.models.xgboost_model:train:335 - Error training XGBoost model: XGBModel.fit() got an unexpected keyword argument 'eval_metric'
+2025-09-09 20:03:22,228 | ERROR | __main__:train_xgboost_model:118 - Error training XGBoost model: XGBModel.fit() got an unexpected keyword argument 'eval_metric'
+2025-09-09 20:03:22,229 | ERROR | __main__:run_full_training:320 - Training pipeline failed: XGBModel.fit() got an unexpected keyword argument 'eval_metric'
+2025-09-09 20:03:22,235 | ERROR | __main__:main:362 - Training failed: XGBModel.fit() got an unexpected keyword argument 'eval_metric'
+2025-09-09 21:14:59,867 | INFO | __main__:prepare_training_data:43 - Preparing training data...
+2025-09-09 21:14:59,870 | INFO | __main__:prepare_training_data:47 - Fetching data for TATAMOTORS.NS...
+2025-09-09 21:14:59,896 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:107 - Fetching OHLCV data for TATAMOTORS.NS (5y, 1d)
+2025-09-09 21:15:01,423 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for TATAMOTORS.NS
+2025-09-09 21:15:02,546 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-09 21:15:02,546 | INFO | __main__:prepare_training_data:69 - Data prepared for TATAMOTORS.NS: 1239 samples
+2025-09-09 21:15:02,546 | INFO | __main__:prepare_training_data:47 - Fetching data for RELIANCE.NS...
+2025-09-09 21:15:02,554 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:107 - Fetching OHLCV data for RELIANCE.NS (5y, 1d)
+2025-09-09 21:15:02,952 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for RELIANCE.NS
+2025-09-09 21:15:04,316 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-09 21:15:04,317 | INFO | __main__:prepare_training_data:69 - Data prepared for RELIANCE.NS: 1239 samples
+2025-09-09 21:15:04,319 | INFO | __main__:prepare_training_data:47 - Fetching data for TCS.NS...
+2025-09-09 21:15:04,327 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:107 - Fetching OHLCV data for TCS.NS (5y, 1d)
+2025-09-09 21:15:04,628 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for TCS.NS
+2025-09-09 21:15:07,078 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-09 21:15:07,079 | INFO | __main__:prepare_training_data:69 - Data prepared for TCS.NS: 1239 samples
+2025-09-09 21:15:07,079 | INFO | __main__:prepare_training_data:75 - Training data prepared for 3 symbols
+2025-09-09 21:15:07,079 | INFO | __main__:train_xgboost_model:79 - Training XGBoost model...
+2025-09-09 21:15:07,369 | INFO | src.models.xgboost_model:prepare_features:122 - Prepared 142 features for 1238 samples
+2025-09-09 21:15:07,372 | INFO | __main__:train_xgboost_model:95 - Prepared 1238 samples for TATAMOTORS.NS
+2025-09-09 21:15:07,662 | INFO | src.models.xgboost_model:prepare_features:122 - Prepared 142 features for 1238 samples
+2025-09-09 21:15:07,663 | INFO | __main__:train_xgboost_model:95 - Prepared 1238 samples for RELIANCE.NS
+2025-09-09 21:15:07,930 | INFO | src.models.xgboost_model:prepare_features:122 - Prepared 142 features for 1238 samples
+2025-09-09 21:15:07,930 | INFO | __main__:train_xgboost_model:95 - Prepared 1238 samples for TCS.NS
+2025-09-09 21:15:07,949 | INFO | __main__:train_xgboost_model:106 - Combined training data: 3714 samples
+2025-09-09 21:15:07,951 | INFO | src.models.xgboost_model:train:270 - Starting XGBoost model training...
+2025-09-09 21:15:08,006 | ERROR | src.models.xgboost_model:train:334 - Error training XGBoost model: could not convert string to float: 'unknown'
+2025-09-09 21:15:08,009 | ERROR | __main__:train_xgboost_model:118 - Error training XGBoost model: could not convert string to float: 'unknown'
+2025-09-09 21:15:08,010 | ERROR | __main__:main:362 - Training failed: could not convert string to float: 'unknown'
+2025-09-09 21:18:31,240 | INFO | __main__:prepare_training_data:43 - Preparing training data...
+2025-09-09 21:18:31,241 | INFO | __main__:prepare_training_data:47 - Fetching data for TATAMOTORS.NS...
+2025-09-09 21:18:31,267 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for TATAMOTORS.NS
+2025-09-09 21:18:31,271 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for TATAMOTORS.NS
+2025-09-09 21:18:32,119 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-09 21:18:32,119 | INFO | __main__:prepare_training_data:69 - Data prepared for TATAMOTORS.NS: 1239 samples
+2025-09-09 21:18:32,120 | INFO | __main__:prepare_training_data:47 - Fetching data for RELIANCE.NS...
+2025-09-09 21:18:32,149 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for RELIANCE.NS
+2025-09-09 21:18:32,155 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for RELIANCE.NS
+2025-09-09 21:18:32,940 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-09 21:18:32,941 | INFO | __main__:prepare_training_data:69 - Data prepared for RELIANCE.NS: 1239 samples
+2025-09-09 21:18:32,941 | INFO | __main__:prepare_training_data:47 - Fetching data for TCS.NS...
+2025-09-09 21:18:32,957 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for TCS.NS
+2025-09-09 21:18:32,961 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for TCS.NS
+2025-09-09 21:18:33,414 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-09 21:18:33,415 | INFO | __main__:prepare_training_data:69 - Data prepared for TCS.NS: 1239 samples
+2025-09-09 21:18:33,415 | INFO | __main__:prepare_training_data:75 - Training data prepared for 3 symbols
+2025-09-09 21:18:33,415 | INFO | __main__:train_xgboost_model:79 - Training XGBoost model...
+2025-09-09 21:18:33,460 | WARNING | src.models.xgboost_model:_select_features:233 - Skipping non-numeric feature: current_ratio (dtype: object)
+2025-09-09 21:18:33,465 | WARNING | src.models.xgboost_model:_select_features:233 - Skipping non-numeric feature: quick_ratio (dtype: object)
+2025-09-09 21:18:33,466 | WARNING | src.models.xgboost_model:_select_features:233 - Skipping non-numeric feature: roe (dtype: object)
+2025-09-09 21:18:33,467 | WARNING | src.models.xgboost_model:_select_features:233 - Skipping non-numeric feature: roi (dtype: object)
+2025-09-09 21:18:33,545 | INFO | src.models.xgboost_model:prepare_features:122 - Prepared 138 features for 1238 samples
+2025-09-09 21:18:33,546 | INFO | __main__:train_xgboost_model:95 - Prepared 1238 samples for TATAMOTORS.NS
+2025-09-09 21:18:33,606 | WARNING | src.models.xgboost_model:_select_features:233 - Skipping non-numeric feature: current_ratio (dtype: object)
+2025-09-09 21:18:33,607 | WARNING | src.models.xgboost_model:_select_features:233 - Skipping non-numeric feature: quick_ratio (dtype: object)
+2025-09-09 21:18:33,608 | WARNING | src.models.xgboost_model:_select_features:233 - Skipping non-numeric feature: roe (dtype: object)
+2025-09-09 21:18:33,608 | WARNING | src.models.xgboost_model:_select_features:233 - Skipping non-numeric feature: roi (dtype: object)
+2025-09-09 21:18:33,677 | INFO | src.models.xgboost_model:prepare_features:122 - Prepared 138 features for 1238 samples
+2025-09-09 21:18:33,677 | INFO | __main__:train_xgboost_model:95 - Prepared 1238 samples for RELIANCE.NS
+2025-09-09 21:18:33,732 | WARNING | src.models.xgboost_model:_select_features:233 - Skipping non-numeric feature: roi (dtype: object)
+2025-09-09 21:18:33,789 | INFO | src.models.xgboost_model:prepare_features:122 - Prepared 141 features for 1238 samples
+2025-09-09 21:18:33,790 | INFO | __main__:train_xgboost_model:95 - Prepared 1238 samples for TCS.NS
+2025-09-09 21:18:33,813 | INFO | __main__:train_xgboost_model:106 - Combined training data: 3714 samples
+2025-09-09 21:18:33,813 | INFO | src.models.xgboost_model:train:277 - Starting XGBoost model training...
+2025-09-09 21:18:49,314 | INFO | src.models.xgboost_model:save_model:463 - Model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\xgboost_model.pkl
+2025-09-09 21:18:49,314 | INFO | src.models.xgboost_model:train:329 - XGBoost model training completed successfully
+2025-09-09 21:18:49,319 | INFO | __main__:train_xgboost_model:112 - XGBoost model training completed
+2025-09-09 21:18:49,320 | INFO | __main__:train_xgboost_model:113 - Train MAE: 0.0003
+2025-09-09 21:18:49,321 | INFO | __main__:train_xgboost_model:114 - Validation MAE: 0.0058
+2025-09-09 21:18:49,324 | INFO | __main__:train_xgboost_model:115 - Test MAE: 0.0065
+2025-09-09 21:18:49,329 | INFO | __main__:main:359 - Training completed successfully!
+2025-09-09 21:19:31,066 | INFO | __main__:prepare_training_data:43 - Preparing training data...
+2025-09-09 21:19:31,069 | INFO | __main__:prepare_training_data:47 - Fetching data for TATAMOTORS.NS...
+2025-09-09 21:19:31,109 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for TATAMOTORS.NS
+2025-09-09 21:19:31,113 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for TATAMOTORS.NS
+2025-09-09 21:19:32,187 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-09 21:19:32,188 | INFO | __main__:prepare_training_data:69 - Data prepared for TATAMOTORS.NS: 1239 samples
+2025-09-09 21:19:32,188 | INFO | __main__:prepare_training_data:47 - Fetching data for RELIANCE.NS...
+2025-09-09 21:19:32,220 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for RELIANCE.NS
+2025-09-09 21:19:32,225 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for RELIANCE.NS
+2025-09-09 21:19:33,405 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-09 21:19:33,406 | INFO | __main__:prepare_training_data:69 - Data prepared for RELIANCE.NS: 1239 samples
+2025-09-09 21:19:33,407 | INFO | __main__:prepare_training_data:47 - Fetching data for TCS.NS...
+2025-09-09 21:19:33,448 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for TCS.NS
+2025-09-09 21:19:33,456 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for TCS.NS
+2025-09-09 21:19:34,842 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-09 21:19:34,843 | INFO | __main__:prepare_training_data:69 - Data prepared for TCS.NS: 1239 samples
+2025-09-09 21:19:34,843 | INFO | __main__:prepare_training_data:75 - Training data prepared for 3 symbols
+2025-09-09 21:19:34,843 | INFO | __main__:train_informer_model:123 - Training Informer model...
+2025-09-09 21:19:34,844 | INFO | src.models.informer_model:train:273 - Starting Informer model training...
+2025-09-09 21:19:34,858 | INFO | src.models.informer_model:prepare_data:231 - Prepared 1120 sequences for Informer training
+2025-09-09 21:19:35,092 | ERROR | src.models.informer_model:train:386 - Error training Informer model: ReduceLROnPlateau.__init__() got an unexpected keyword argument 'verbose'
+2025-09-09 21:19:35,093 | ERROR | __main__:train_informer_model:139 - Error training Informer model: ReduceLROnPlateau.__init__() got an unexpected keyword argument 'verbose'
+2025-09-09 21:19:35,093 | ERROR | __main__:main:362 - Training failed: ReduceLROnPlateau.__init__() got an unexpected keyword argument 'verbose'
+2025-09-09 21:20:26,593 | INFO | __main__:prepare_training_data:43 - Preparing training data...
+2025-09-09 21:20:26,594 | INFO | __main__:prepare_training_data:47 - Fetching data for TATAMOTORS.NS...
+2025-09-09 21:20:26,638 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for TATAMOTORS.NS
+2025-09-09 21:20:26,650 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for TATAMOTORS.NS
+2025-09-09 21:20:27,504 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-09 21:20:27,505 | INFO | __main__:prepare_training_data:69 - Data prepared for TATAMOTORS.NS: 1239 samples
+2025-09-09 21:20:27,505 | INFO | __main__:prepare_training_data:47 - Fetching data for RELIANCE.NS...
+2025-09-09 21:20:27,535 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for RELIANCE.NS
+2025-09-09 21:20:27,550 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for RELIANCE.NS
+2025-09-09 21:20:29,002 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-09 21:20:29,002 | INFO | __main__:prepare_training_data:69 - Data prepared for RELIANCE.NS: 1239 samples
+2025-09-09 21:20:29,003 | INFO | __main__:prepare_training_data:47 - Fetching data for TCS.NS...
+2025-09-09 21:20:29,035 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for TCS.NS
+2025-09-09 21:20:29,039 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for TCS.NS
+2025-09-09 21:20:29,908 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-09 21:20:29,910 | INFO | __main__:prepare_training_data:69 - Data prepared for TCS.NS: 1239 samples
+2025-09-09 21:20:29,912 | INFO | __main__:prepare_training_data:75 - Training data prepared for 3 symbols
+2025-09-09 21:20:29,913 | INFO | __main__:train_informer_model:123 - Training Informer model...
+2025-09-09 21:20:29,915 | INFO | src.models.informer_model:train:273 - Starting Informer model training...
+2025-09-09 21:20:29,922 | INFO | src.models.informer_model:prepare_data:231 - Prepared 1120 sequences for Informer training
+2025-09-09 21:23:34,031 | INFO | src.models.informer_model:save_model:504 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-09-09 21:26:50,131 | INFO | src.models.informer_model:save_model:504 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-09-09 21:29:46,655 | INFO | src.models.informer_model:save_model:504 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-09-09 21:38:45,392 | INFO | src.models.informer_model:save_model:504 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-09-09 21:50:50,382 | INFO | __main__:prepare_training_data:43 - Preparing training data...
+2025-09-09 21:50:50,383 | INFO | __main__:prepare_training_data:47 - Fetching data for TATAMOTORS.NS...
+2025-09-09 21:50:50,501 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for TATAMOTORS.NS
+2025-09-09 21:50:50,512 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for TATAMOTORS.NS
+2025-09-09 21:50:52,714 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-09 21:50:52,714 | INFO | __main__:prepare_training_data:69 - Data prepared for TATAMOTORS.NS: 1239 samples
+2025-09-09 21:50:52,715 | INFO | __main__:prepare_training_data:47 - Fetching data for RELIANCE.NS...
+2025-09-09 21:50:52,760 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for RELIANCE.NS
+2025-09-09 21:50:52,765 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for RELIANCE.NS
+2025-09-09 21:50:53,980 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-09 21:50:53,980 | INFO | __main__:prepare_training_data:69 - Data prepared for RELIANCE.NS: 1239 samples
+2025-09-09 21:50:53,981 | INFO | __main__:prepare_training_data:47 - Fetching data for TCS.NS...
+2025-09-09 21:50:54,027 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for TCS.NS
+2025-09-09 21:50:54,031 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for TCS.NS
+2025-09-09 21:50:55,105 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-09 21:50:55,108 | INFO | __main__:prepare_training_data:69 - Data prepared for TCS.NS: 1239 samples
+2025-09-09 21:50:55,110 | INFO | __main__:prepare_training_data:75 - Training data prepared for 3 symbols
+2025-09-09 21:50:55,110 | INFO | __main__:train_informer_model:123 - Training Informer model...
+2025-09-09 21:50:55,111 | INFO | src.models.informer_model:train:273 - Starting Informer model training...
+2025-09-09 21:50:55,121 | INFO | src.models.informer_model:prepare_data:231 - Prepared 1120 sequences for Informer training
+2025-09-09 21:54:38,868 | INFO | src.models.informer_model:save_model:504 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-09-09 21:58:07,077 | INFO | src.models.informer_model:save_model:504 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-09-09 22:01:12,788 | INFO | src.models.informer_model:save_model:504 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-09-09 22:16:08,919 | INFO | src.models.informer_model:save_model:504 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-09-09 22:28:30,420 | INFO | src.models.informer_model:train:364 - Epoch 10/100, Train Loss: 0.056657, Val Loss: 0.210145
+2025-09-09 22:32:59,233 | INFO | src.models.informer_model:save_model:504 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-09-09 22:38:39,558 | INFO | src.models.informer_model:save_model:504 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-09-09 23:14:50,358 | INFO | src.models.informer_model:train:364 - Epoch 20/100, Train Loss: 0.050261, Val Loss: 0.169718
+2025-09-09 23:21:52,986 | INFO | src.models.informer_model:train:360 - Early stopping at epoch 22
+2025-09-09 23:21:53,885 | INFO | src.models.informer_model:load_model:520 - Informer model loaded successfully
+2025-09-09 23:21:53,956 | INFO | src.models.informer_model:load_model:524 - Informer scaler loaded successfully
+2025-09-09 23:21:53,960 | INFO | src.models.informer_model:load_model:528 - Informer config loaded successfully
+2025-09-09 23:21:54,329 | ERROR | src.models.informer_model:_evaluate_model:413 - Error evaluating model: The size of tensor a (896) must match the size of tensor b (96) at non-singleton dimension 0
+2025-09-09 23:21:54,379 | ERROR | src.models.informer_model:_evaluate_model:413 - Error evaluating model: The size of tensor a (224) must match the size of tensor b (96) at non-singleton dimension 0
+2025-09-09 23:21:54,383 | INFO | src.models.informer_model:train:374 - Informer model training completed successfully
+2025-09-09 23:21:54,451 | INFO | __main__:train_informer_model:134 - Informer model training completed
+2025-09-09 23:21:54,454 | ERROR | __main__:train_informer_model:139 - Error training Informer model: 'mae'
+2025-09-09 23:21:54,455 | ERROR | __main__:main:362 - Training failed: 'mae'

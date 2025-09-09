@@ -1,0 +1,54 @@
+# Core Data Science Libraries
+numpy
+pandas
+scikit-learn
+scipy
+
+# Financial Data
+yfinance
+# pandas-ta  # Has Windows compatibility issues
+# ta-lib     # Requires separate installation
+
+# Machine Learning Models
+xgboost
+torch
+transformers
+datasets
+
+# Time Series Forecasting
+#darts
+
+# Natural Language Processing
+googletrans
+beautifulsoup4
+requests
+newspaper3k
+
+# Model Explainability
+shap
+
+# Web Framework
+fastapi
+uvicorn
+streamlit
+plotly
+mplfinance
+
+# Database
+sqlalchemy
+
+# Utilities
+python-dotenv
+pydantic
+loguru
+schedule
+python-multipart
+
+# Testing
+pytest
+pytest-asyncio
+
+# Development
+black
+flake8
+mypy
