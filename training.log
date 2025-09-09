@@ -188,3 +188,43 @@
 2025-09-09 23:21:54,451 | INFO | __main__:train_informer_model:134 - Informer model training completed
 2025-09-09 23:21:54,454 | ERROR | __main__:train_informer_model:139 - Error training Informer model: 'mae'
 2025-09-09 23:21:54,455 | ERROR | __main__:main:362 - Training failed: 'mae'
+2025-09-09 23:25:43,507 | INFO | __main__:prepare_training_data:43 - Preparing training data...
+2025-09-09 23:25:43,508 | INFO | __main__:prepare_training_data:47 - Fetching data for TATAMOTORS.NS...
+2025-09-09 23:25:43,607 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for TATAMOTORS.NS
+2025-09-09 23:25:43,619 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for TATAMOTORS.NS
+2025-09-09 23:25:44,876 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-09 23:25:44,876 | INFO | __main__:prepare_training_data:69 - Data prepared for TATAMOTORS.NS: 1239 samples
+2025-09-09 23:25:44,877 | INFO | __main__:prepare_training_data:47 - Fetching data for RELIANCE.NS...
+2025-09-09 23:25:44,925 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for RELIANCE.NS
+2025-09-09 23:25:44,934 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for RELIANCE.NS
+2025-09-09 23:25:46,187 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-09 23:25:46,187 | INFO | __main__:prepare_training_data:69 - Data prepared for RELIANCE.NS: 1239 samples
+2025-09-09 23:25:46,188 | INFO | __main__:prepare_training_data:47 - Fetching data for TCS.NS...
+2025-09-09 23:25:46,236 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for TCS.NS
+2025-09-09 23:25:46,240 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for TCS.NS
+2025-09-09 23:25:47,756 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-09 23:25:47,757 | INFO | __main__:prepare_training_data:69 - Data prepared for TCS.NS: 1239 samples
+2025-09-09 23:25:47,757 | INFO | __main__:prepare_training_data:75 - Training data prepared for 3 symbols
+2025-09-09 23:25:47,758 | INFO | __main__:train_informer_model:123 - Training Informer model...
+2025-09-09 23:25:47,758 | INFO | src.models.informer_model:train:273 - Starting Informer model training...
+2025-09-09 23:25:47,773 | INFO | src.models.informer_model:prepare_data:231 - Prepared 1120 sequences for Informer training
+2025-09-09 23:29:41,699 | INFO | src.models.informer_model:save_model:521 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-09-09 23:33:27,045 | INFO | src.models.informer_model:save_model:521 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-09-09 23:37:30,458 | INFO | src.models.informer_model:save_model:521 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-09-09 23:49:23,690 | INFO | src.models.informer_model:save_model:521 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-09-09 23:56:32,534 | INFO | src.models.informer_model:save_model:521 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-09-10 00:04:10,054 | INFO | src.models.informer_model:train:364 - Epoch 10/100, Train Loss: 0.017772, Val Loss: 0.036017
+2025-09-10 00:08:50,721 | INFO | src.models.informer_model:save_model:521 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-09-10 00:14:33,068 | INFO | src.models.informer_model:save_model:521 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-09-10 00:42:49,183 | INFO | src.models.informer_model:train:364 - Epoch 20/100, Train Loss: 0.005786, Val Loss: 0.026177
+2025-09-10 00:47:45,774 | INFO | src.models.informer_model:train:360 - Early stopping at epoch 22
+2025-09-10 00:47:46,249 | INFO | src.models.informer_model:load_model:537 - Informer model loaded successfully
+2025-09-10 00:47:46,286 | INFO | src.models.informer_model:load_model:541 - Informer scaler loaded successfully
+2025-09-10 00:47:46,292 | INFO | src.models.informer_model:load_model:545 - Informer config loaded successfully
+2025-09-10 00:47:46,487 | ERROR | src.models.informer_model:_evaluate_model:424 - Error evaluating model: The size of tensor a (896) must match the size of tensor b (96) at non-singleton dimension 0
+2025-09-10 00:47:46,557 | ERROR | src.models.informer_model:_evaluate_model:424 - Error evaluating model: The size of tensor a (224) must match the size of tensor b (96) at non-singleton dimension 0
+2025-09-10 00:47:46,558 | INFO | src.models.informer_model:train:374 - Informer model training completed successfully
+2025-09-10 00:47:46,600 | INFO | __main__:train_informer_model:134 - Informer model training completed
+2025-09-10 00:47:46,601 | INFO | __main__:train_informer_model:135 - Train MAE: 0.0000
+2025-09-10 00:47:46,601 | INFO | __main__:train_informer_model:136 - Validation MAE: 0.0000
+2025-09-10 00:47:46,603 | INFO | __main__:main:359 - Training completed successfully!
