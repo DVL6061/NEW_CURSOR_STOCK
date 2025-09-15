@@ -40,8 +40,12 @@ class NewsScraper:
     def __init__(self):
         self.db_path = settings.DATA_DIR / "news_data.db"
         self.session = requests.Session()
+        # Update headers to better mimic a real browser request
         self.session.headers.update({
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+            'Accept-Language': 'en-US,en;q=0.9',
+            'Referer': 'https://www.google.com/'
         })
         self._init_database()
     
@@ -129,44 +133,36 @@ class NewsScraper:
     def _scrape_cnbc(self, base_url: str, symbols: List[str], max_articles: int) -> List[NewsArticle]:
         """Scrape news from CNBC"""
         articles = []
-        
         try:
-            # CNBC search for Indian stocks
-            search_url = f"https://www.cnbc.com/search/?query={'%20'.join(symbols)}"
-            response = self.session.get(search_url, timeout=10)
+            search_url = f"https://www.cnbc.com/search/?query={'%20'.join(symbols)}&qsearchterm={'%20'.join(symbols)}"
+            response = self.session.get(search_url, timeout=15)
             response.raise_for_status()
-            
             soup = BeautifulSoup(response.content, 'html.parser')
             
-            # Find article links
-            article_links = soup.find_all('a', href=True)
+            # Updated selector for CNBC search results
+            article_links = soup.select('.SearchResult-searchResultCard a.Card-titleLink')
             
             for link in article_links[:max_articles]:
                 href = link.get('href')
-                if href and '/news/' in href:
-                    full_url = urljoin(base_url, href)
-                    article = self._scrape_article_content(full_url, "CNBC")
+                if href and href.startswith('http'):
+                    article = self._scrape_article_content(href, "CNBC")
                     if article:
                         articles.append(article)
-                        time.sleep(1)  # Rate limiting
-        
+                        time.sleep(1)
         except Exception as e:
             logger.error(f"Error scraping CNBC: {str(e)}")
-        
         return articles
     
     def _scrape_moneycontrol(self, base_url: str, symbols: List[str], max_articles: int) -> List[NewsArticle]:
         """Scrape news from Moneycontrol"""
         articles = []
-        
         try:
             response = self.session.get(base_url, timeout=10)
             response.raise_for_status()
-            
             soup = BeautifulSoup(response.content, 'html.parser')
             
-            # Find article links
-            article_links = soup.find_all('a', href=True)
+            # Updated selector for Moneycontrol article links
+            article_links = soup.select('#cagetory a')
             
             for link in article_links[:max_articles]:
                 href = link.get('href')
@@ -176,24 +172,20 @@ class NewsScraper:
                     if article:
                         articles.append(article)
                         time.sleep(1)
-        
         except Exception as e:
             logger.error(f"Error scraping Moneycontrol: {str(e)}")
-        
         return articles
     
     def _scrape_mint(self, base_url: str, symbols: List[str], max_articles: int) -> List[NewsArticle]:
         """Scrape news from Mint"""
         articles = []
-        
         try:
             response = self.session.get(base_url, timeout=10)
             response.raise_for_status()
-            
             soup = BeautifulSoup(response.content, 'html.parser')
             
-            # Find article links
-            article_links = soup.find_all('a', href=True)
+            # Updated selector for Mint article links
+            article_links = soup.select('h2 a, h3 a')
             
             for link in article_links[:max_articles]:
                 href = link.get('href')
@@ -203,90 +195,79 @@ class NewsScraper:
                     if article:
                         articles.append(article)
                         time.sleep(1)
-        
         except Exception as e:
             logger.error(f"Error scraping Mint: {str(e)}")
-        
         return articles
     
     def _scrape_economic_times(self, base_url: str, symbols: List[str], max_articles: int) -> List[NewsArticle]:
         """Scrape news from Economic Times"""
         articles = []
-        
         try:
             response = self.session.get(base_url, timeout=10)
             response.raise_for_status()
-            
             soup = BeautifulSoup(response.content, 'html.parser')
             
-            # Find article links
-            article_links = soup.find_all('a', href=True)
+            # Updated selector for Economic Times article links
+            article_links = soup.select('.eachStory a')
             
             for link in article_links[:max_articles]:
                 href = link.get('href')
                 if href and '/markets/' in href:
-                    full_url = urljoin(base_url, href)
+                    full_url = urljoin("https://economictimes.indiatimes.com", href)
                     article = self._scrape_article_content(full_url, "Economic Times")
                     if article:
                         articles.append(article)
                         time.sleep(1)
-        
         except Exception as e:
             logger.error(f"Error scraping Economic Times: {str(e)}")
-        
         return articles
     
     def _scrape_business_standard(self, base_url: str, symbols: List[str], max_articles: int) -> List[NewsArticle]:
         """Scrape news from Business Standard"""
         articles = []
-        
         try:
             response = self.session.get(base_url, timeout=10)
             response.raise_for_status()
-            
             soup = BeautifulSoup(response.content, 'html.parser')
             
-            # Find article links
-            article_links = soup.find_all('a', href=True)
+            # Updated selector for Business Standard article links
+            article_links = soup.select('h2 a')
             
             for link in article_links[:max_articles]:
                 href = link.get('href')
-                if href and '/markets/' in href:
+                if href and ('/article/' in href or '/markets/' in href):
                     full_url = urljoin(base_url, href)
                     article = self._scrape_article_content(full_url, "Business Standard")
                     if article:
                         articles.append(article)
                         time.sleep(1)
-        
         except Exception as e:
             logger.error(f"Error scraping Business Standard: {str(e)}")
-        
         return articles
     
     def _scrape_article_content(self, url: str, source: str) -> Optional[NewsArticle]:
         """Scrape content from a specific article URL"""
         try:
+            if not url.startswith('http'):
+                logger.warning(f"Skipping invalid URL: {url}")
+                return None
+
             response = self.session.get(url, timeout=10)
             response.raise_for_status()
             
             soup = BeautifulSoup(response.content, 'html.parser')
             
-            # Extract title
             title = self._extract_title(soup, source)
             if not title:
+                logger.warning(f"No title found for article: {url}")
                 return None
             
-            # Extract content
             content = self._extract_content(soup, source)
             if not content:
+                logger.warning(f"No content found for article: {url}")
                 return None
             
-            # Extract published date
-            published_date = self._extract_published_date(soup, source)
-            if not published_date:
-                published_date = datetime.now()
-            
-            # Detect language
+            published_date = self._extract_published_date(soup, source) or datetime.now()
             language = self._detect_language(title + " " + content)
             
             return NewsArticle(
@@ -298,87 +279,72 @@ class NewsScraper:
                 language=language
             )
         
+        except requests.exceptions.HTTPError as http_err:
+             logger.error(f"HTTP error scraping article content from {url}: {http_err}")
+             return None
         except Exception as e:
             logger.error(f"Error scraping article content from {url}: {str(e)}")
             return None
     
     def _extract_title(self, soup: BeautifulSoup, source: str) -> Optional[str]:
         """Extract article title based on source"""
-        title_selectors = {
-            "CNBC": ["h1", ".ArticleHeader-headline", ".headline"],
-            "Moneycontrol": ["h1", ".article_title", ".title"],
-            "Mint": ["h1", ".headline", ".title"],
-            "Economic Times": ["h1", ".artTitle", ".title"],
-            "Business Standard": ["h1", ".story-title", ".title"]
-        }
-        
-        selectors = title_selectors.get(source, ["h1", ".title", ".headline"])
-        
-        for selector in selectors:
+        title_selectors = [
+            "h1", 
+            ".article_title", ".story-title", ".artTitle", ".headline",
+            "title" # Fallback
+        ]
+        for selector in title_selectors:
             title_elem = soup.select_one(selector)
             if title_elem:
-                return title_elem.get_text().strip()
-        
+                return title_elem.get_text(strip=True)
         return None
     
     def _extract_content(self, soup: BeautifulSoup, source: str) -> Optional[str]:
         """Extract article content based on source"""
         content_selectors = {
-            "CNBC": [".ArticleBody-articleBody", ".story-content", ".content"],
-            "Moneycontrol": [".content_wrapper", ".article_content", ".content"],
-            "Mint": [".story-content", ".content", ".article-content"],
-            "Economic Times": [".artText", ".content", ".article-content"],
-            "Business Standard": [".story-content", ".content", ".article-content"]
+            "CNBC": [".ArticleBody-articleBody"],
+            "Moneycontrol": ["#contentdata"],
+            "Mint": [".FirstEle, .mainArea"],
+            "Economic Times": [".artText"],
+            "Business Standard": [".story-content, .p-content"]
         }
         
-        selectors = content_selectors.get(source, [".content", ".article-content", ".story-content"])
+        selectors = content_selectors.get(source, [".content", "article", ".story-content"])
         
         for selector in selectors:
             content_elem = soup.select_one(selector)
             if content_elem:
-                # Remove script and style elements
-                for script in content_elem(["script", "style"]):
-                    script.decompose()
+                for element in content_elem(["script", "style", "aside", "figure"]):
+                    element.decompose()
                 
-                content = content_elem.get_text().strip()
-                if len(content) > 100:  # Ensure meaningful content
+                paragraphs = content_elem.find_all('p')
+                content = ' '.join(p.get_text(strip=True) for p in paragraphs)
+
+                if len(content) > 150:
                     return content
         
+        logger.debug(f"Could not find content with selectors for {source}")
         return None
     
     def _extract_published_date(self, soup: BeautifulSoup, source: str) -> Optional[datetime]:
         """Extract published date based on source"""
-        date_selectors = {
-            "CNBC": [".ArticleHeader-timestamp", ".timestamp", "time"],
-            "Moneycontrol": [".article_date", ".date", "time"],
-            "Mint": [".story-date", ".date", "time"],
-            "Economic Times": [".artDate", ".date", "time"],
-            "Business Standard": [".story-date", ".date", "time"]
-        }
+        date_selectors = ["time", '[class*="date"]', '[class*="time"]', '[id*="date"]', '[id*="time"]']
         
-        selectors = date_selectors.get(source, [".date", "time"])
-        
-        for selector in selectors:
+        for selector in date_selectors:
             date_elem = soup.select_one(selector)
             if date_elem:
-                date_text = date_elem.get_text().strip()
-                try:
-                    # Try to parse various date formats
-                    for fmt in ["%Y-%m-%d", "%d-%m-%Y", "%B %d, %Y", "%d %B %Y"]:
-                        try:
-                            return datetime.strptime(date_text, fmt)
-                        except ValueError:
-                            continue
-                except:
-                    continue
-        
+                date_text = date_elem.get_text(strip=True) or date_elem.get('datetime')
+                if date_text:
+                    try:
+                        from dateutil import parser
+                        return parser.parse(date_text)
+                    except (ValueError, ImportError, TypeError):
+                        continue
         return None
     
     def _detect_language(self, text: str) -> str:
         """Simple language detection for English/Hindi"""
-        # Check for Hindi characters (Devanagari script)
-        hindi_pattern = re.compile(r'[\u0900-\u097F]')
-        if hindi_pattern.search(text):
+        if re.search(r'[\u0900-\u097F]', text):
             return "hi"
         return "en"
     
@@ -386,9 +352,10 @@ class NewsScraper:
         """Save articles to database"""
         try:
             with self.get_db_connection() as conn:
+                cursor = conn.cursor()
                 for article in articles:
-                    conn.execute("""
-                        INSERT OR REPLACE INTO news_articles 
+                    cursor.execute("""
+                        INSERT OR IGNORE INTO news_articles 
                         (title, content, url, source, published_date, language)
                         VALUES (?, ?, ?, ?, ?, ?)
                     """, (
@@ -400,7 +367,7 @@ class NewsScraper:
                         article.language
                     ))
                 conn.commit()
-                logger.info(f"Saved {len(articles)} articles to database")
+                logger.info(f"Saved/updated {len(articles)} articles in the database")
         
         except Exception as e:
             logger.error(f"Error saving articles to database: {str(e)}")
@@ -409,30 +376,10 @@ class NewsScraper:
         """Get recent articles from database"""
         try:
             with self.get_db_connection() as conn:
-                query = """
-                    SELECT * FROM news_articles 
-                    WHERE published_date >= datetime('now', '-{} days')
-                    ORDER BY published_date DESC
-                """.format(days)
+                query = f"SELECT * FROM news_articles WHERE published_date >= date('now', '-{days} days') ORDER BY published_date DESC"
+                df = pd.read_sql_query(query, conn, parse_dates=['published_date'])
                 
-                df = pd.read_sql_query(query, conn)
-                
-                articles = []
-                for _, row in df.iterrows():
-                    article = NewsArticle(
-                        title=row['title'],
-                        content=row['content'],
-                        url=row['url'],
-                        source=row['source'],
-                        published_date=pd.to_datetime(row['published_date']),
-                        sentiment_score=row['sentiment_score'],
-                        sentiment_label=row['sentiment_label'],
-                        language=row['language'],
-                        translated_title=row['translated_title'],
-                        translated_content=row['translated_content']
-                    )
-                    articles.append(article)
-                
+                articles = [NewsArticle(**row) for i, row in df.iterrows()]
                 return articles
         
         except Exception as e:
@@ -441,9 +388,9 @@ class NewsScraper:
     
     def translate_article(self, article: NewsArticle, target_language: str = "hi") -> NewsArticle:
         """Translate article content (placeholder for translation service)"""
-        # This would integrate with Google Translate or similar service
-        # For now, return the original article
+        logger.warning("Translation service is not implemented. Returning original article.")
         return article
 
 # Global instance
 news_scraper = NewsScraper()
+

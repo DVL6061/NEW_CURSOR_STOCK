@@ -15,6 +15,7 @@ class Settings(BaseSettings):
     DATA_DIR: Path = PROJECT_ROOT / "data"
     MODELS_DIR: Path = PROJECT_ROOT / "models"
     CONFIG_DIR: Path = PROJECT_ROOT / "config"
+    LOGS_DIR: Path = PROJECT_ROOT / "logs"
     
     # Database settings
     DATABASE_URL: str = "sqlite:///./stock_forecast.db"
@@ -26,17 +27,14 @@ class Settings(BaseSettings):
     
     # Indian stock symbols
     DEFAULT_SYMBOLS: List[str] = [
-        "TATAMOTORS.NS", "RELIANCE.NS", "TCS.NS", "HDFCBANK.NS", 
-        "INFY.NS", "HINDUNILVR.NS", "ITC.NS", "SBIN.NS", "BHARTIARTL.NS", "KOTAKBANK.NS"
+        "TATAMOTORS.NS", "RELIANCE.NS", "TCS.NS"
     ]
     
     # News sources
     NEWS_SOURCES: Dict[str, str] = {
         "cnbc": "https://www.cnbc.com/search/?query=indian%20stocks",
         "moneycontrol": "https://www.moneycontrol.com/news/business/markets/",
-        "mint": "https://www.livemint.com/market",
-        "economic_times": "https://economictimes.indiatimes.com/markets",
-        "business_standard": "https://www.business-standard.com/markets"
+        "mint": "https://www.livemint.com/market"
     }
     
     # Model settings

@@ -1,0 +1,63 @@
+2025-09-12 10:20:21,181 | INFO | __main__:train_sentiment_model:176 - Training sentiment analysis model...
+2025-09-12 10:20:21,183 | INFO | src.data.news_scraper:scrape_all_sources:94 - Scraping news from cnbc
+2025-09-12 10:20:23,289 | INFO | src.data.news_scraper:scrape_all_sources:97 - Scraped 0 articles from cnbc
+2025-09-12 10:20:25,311 | INFO | src.data.news_scraper:scrape_all_sources:94 - Scraping news from moneycontrol
+2025-09-12 10:20:33,576 | WARNING | src.data.news_scraper:_scrape_article_content:288 - No content found for article: https://www.moneycontrol.com/news/business/markets/weekly-tactical-pick-why-this-construction-major-may-reverse-its-underperformance-13541285.html
+2025-09-12 10:20:34,392 | WARNING | src.data.news_scraper:_scrape_article_content:288 - No content found for article: https://www.moneycontrol.com/news/videos/business/markets/live-7-days-in-a-row-can-nifty-end-this-week-on-a-high-infosys-in-focus-opening-bell-13541194.html
+2025-09-12 10:20:36,973 | WARNING | src.data.news_scraper:_scrape_article_content:288 - No content found for article: https://www.moneycontrol.com/news/business/markets/sebi-board-meeting-live-updates-chairman-tuhin-kanta-pandey-weekly-f-o-contracts-ipo-mpo-reforms-liveblog-13540994.html
+2025-09-12 10:20:47,505 | WARNING | src.data.news_scraper:_scrape_article_content:288 - No content found for article: https://www.moneycontrol.com/news/business/markets/nifty-bank-index-today-live-updates-12-september-2025-alpha-liveblog-13540720.html
+2025-09-12 10:20:49,162 | WARNING | src.data.news_scraper:_scrape_article_content:288 - No content found for article: https://www.moneycontrol.com/news/business/markets/nifty-midcap-150-index-today-live-updates-12-september-2025-alpha-liveblog-13540716.html
+2025-09-12 10:20:51,648 | WARNING | src.data.news_scraper:_scrape_article_content:288 - No content found for article: https://www.moneycontrol.com/news/business/markets/nifty-next-50-index-today-live-updates-12-september-2025-alpha-liveblog-13540718.html
+2025-09-12 10:20:56,331 | WARNING | src.data.news_scraper:_scrape_article_content:288 - No content found for article: https://www.moneycontrol.com/news/business/markets/stock-market-live-sensex-nifty-50-share-price-gift-nifty-latest-updates-12-09-2025-liveblog-13540677.html
+2025-09-12 10:21:02,240 | INFO | src.data.news_scraper:scrape_all_sources:97 - Scraped 13 articles from moneycontrol
+2025-09-12 10:21:04,242 | INFO | src.data.news_scraper:scrape_all_sources:94 - Scraping news from mint
+2025-09-12 10:21:05,639 | WARNING | src.data.news_scraper:_scrape_article_content:288 - No content found for article: https://www.livemint.com/market/ipo/urban-company-ipo-day-3-gmp-jumps-subscription-status-date-review-to-listing-date-apply-or-not-good-or-bad-11757642992561.html
+2025-09-12 10:21:05,997 | WARNING | src.data.news_scraper:_scrape_article_content:288 - No content found for article: https://www.livemint.com/market/ipo/shringar-house-of-mangalsutra-ipo-day-3-live-gmp-subscription-status-review-other-details-apply-or-not-11757647607159.html
+2025-09-12 10:21:06,131 | WARNING | src.data.news_scraper:_scrape_article_content:288 - No content found for article: https://www.livemint.com/market/ipo/urban-company-ipo-gmp-urban-company-ipo-review-urban-company-ipo-subscription-urban-company-ipo-listing-urban-co-ipo-11757647301473.html
+2025-09-12 10:21:06,425 | WARNING | src.data.news_scraper:_scrape_article_content:288 - No content found for article: https://www.livemint.com/market/stock-market-news/jbm-auto-share-price-surges-8-5-as-ifc-invests-100-million-for-electric-bus-expansion-in-india-11757652028443.html
+2025-09-12 10:21:06,718 | WARNING | src.data.news_scraper:_scrape_article_content:288 - No content found for article: https://www.livemint.com/market/ipo/dev-accelerator-ipo-gmp-dev-accelerator-ipo-review-dev-accelerator-ipo-subscription-dev-accelerator-ipo-11757649074559.html
+2025-09-12 10:21:07,776 | WARNING | src.data.news_scraper:_scrape_article_content:288 - No content found for article: https://www.livemint.com/market/market-stats
+2025-09-12 10:21:08,257 | WARNING | src.data.news_scraper:_scrape_article_content:288 - No content found for article: https://www.livemint.com/market/mark-to-market
+2025-09-12 10:21:08,487 | WARNING | src.data.news_scraper:_scrape_article_content:288 - No content found for article: https://www.livemint.com/market/mark-to-market
+2025-09-12 10:21:08,698 | WARNING | src.data.news_scraper:_scrape_article_content:288 - No content found for article: https://www.livemint.com/market/stock-market-news
+2025-09-12 10:21:10,195 | WARNING | src.data.news_scraper:_scrape_article_content:288 - No content found for article: https://www.livemint.com/market/ipo
+2025-09-12 10:21:10,525 | WARNING | src.data.news_scraper:_scrape_article_content:288 - No content found for article: https://www.livemint.com/market/commodities
+2025-09-12 10:21:10,526 | INFO | src.data.news_scraper:scrape_all_sources:97 - Scraped 0 articles from mint
+2025-09-12 10:21:12,527 | INFO | src.data.news_scraper:scrape_all_sources:94 - Scraping news from economic_times
+2025-09-12 10:21:13,924 | INFO | src.data.news_scraper:scrape_all_sources:97 - Scraped 0 articles from economic_times
+2025-09-12 10:21:15,924 | INFO | src.data.news_scraper:scrape_all_sources:94 - Scraping news from business_standard
+2025-09-12 10:21:17,015 | ERROR | src.data.news_scraper:_scrape_business_standard:263 - Error scraping Business Standard: 403 Client Error: Forbidden for url: https://www.business-standard.com/markets
+2025-09-12 10:21:17,017 | INFO | src.data.news_scraper:scrape_all_sources:97 - Scraped 0 articles from business_standard
+2025-09-15 10:48:16,211 | INFO | __main__:train_sentiment_model:176 - Training sentiment analysis model...
+2025-09-15 10:48:16,217 | INFO | src.data.news_scraper:scrape_all_sources:98 - Scraping news from cnbc
+2025-09-15 10:48:21,326 | INFO | src.data.news_scraper:scrape_all_sources:101 - Scraped 0 articles from cnbc
+2025-09-15 10:48:23,330 | INFO | src.data.news_scraper:scrape_all_sources:98 - Scraping news from moneycontrol
+2025-09-15 10:49:03,369 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.moneycontrol.com/news/business/markets/will-nifty-bulls-gallop-towards-25-500-on-fed-rate-cut-bets-opening-bell-live-13545779.html
+2025-09-15 10:49:04,114 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.moneycontrol.com/news/business/markets/will-nifty-bulls-gallop-towards-25-500-on-fed-rate-cut-bets-opening-bell-live-13545779.html
+2025-09-15 10:49:04,118 | INFO | src.data.news_scraper:scrape_all_sources:101 - Scraped 14 articles from moneycontrol
+2025-09-15 10:49:06,129 | INFO | src.data.news_scraper:scrape_all_sources:98 - Scraping news from mint
+2025-09-15 10:49:13,792 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/stock-market-news/new-investors-additions-in-indian-stock-market-fall-18-mom-in-august-as-trump-tariffs-fii-outflows-weigh-on-sentiment-11757913061491.html
+2025-09-15 10:49:15,025 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/ipo/urban-company-ipo-allotment-status-urban-company-ipo-gmp-urban-company-ipo-urban-company-ipo-subscription-11757908196465.html
+2025-09-15 10:49:15,371 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/stock-market-news/fo-strategy-railtel-corp-to-bajaj-finance-rupak-de-suggests-buy-or-sell-strategy-for-these-stocks-15-september-11757911980101.html
+2025-09-15 10:49:15,681 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/ipo/dev-accelerator-ipo-gmp-dev-accelerator-ipo-allotment-status-dev-accelerator-ipo-allotment-date-dev-accelerator-ipo-11757908431124.html
+2025-09-15 10:49:15,991 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/stock-market-news/krbl-share-price-crashes-13-whats-behind-the-fall-in-small-cap-agri-stock-explained-11757909006931.html
+2025-09-15 10:49:16,599 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/market-stats
+2025-09-15 10:49:17,705 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/mark-to-market
+2025-09-15 10:49:18,443 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/mark-to-market
+2025-09-15 10:49:31,910 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/stock-market-news
+2025-09-15 10:49:32,670 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/stock-market-news/new-investors-additions-in-indian-stock-market-fall-18-mom-in-august-as-trump-tariffs-fii-outflows-weigh-on-sentiment-11757913061491.html
+2025-09-15 10:49:33,129 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/stock-market-news/fo-strategy-railtel-corp-to-bajaj-finance-rupak-de-suggests-buy-or-sell-strategy-for-these-stocks-15-september-11757911980101.html
+2025-09-15 10:49:33,554 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/stock-market-news/morning-bid-europe-its-all-about-central-banks-this-week-11757911138064.html
+2025-09-15 10:49:33,880 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/stock-market-news/vashishtha-luxury-fashion-share-price-lists-at-rs-118-on-bse-sme-up-6-31-from-ipo-price-11757909779450.html
+2025-09-15 10:49:33,883 | INFO | src.data.news_scraper:scrape_all_sources:101 - Scraped 7 articles from mint
+2025-09-15 10:49:35,897 | INFO | src.data.news_scraper:scrape_all_sources:98 - Scraping news from economic_times
+2025-09-15 10:49:45,708 | INFO | src.data.news_scraper:scrape_all_sources:101 - Scraped 0 articles from economic_times
+2025-09-15 10:49:47,718 | INFO | src.data.news_scraper:scrape_all_sources:98 - Scraping news from business_standard
+2025-09-15 10:49:52,314 | ERROR | src.data.news_scraper:_scrape_business_standard:245 - Error scraping Business Standard: 403 Client Error: Forbidden for url: https://www.business-standard.com/markets
+2025-09-15 10:49:52,333 | INFO | src.data.news_scraper:scrape_all_sources:101 - Scraped 0 articles from business_standard
+2025-09-15 10:51:26,675 | INFO | src.data.news_scraper:save_articles:370 - Saved/updated 21 articles in the database
+2025-09-15 10:51:26,691 | INFO | __main__:train_sentiment_model:203 - Sentiment analysis completed for 21 articles
+2025-09-15 10:51:26,699 | INFO | __main__:train_sentiment_model:204 - Average sentiment: -0.159
+2025-09-15 10:51:26,705 | INFO | __main__:train_sentiment_model:205 - Positive articles: 8
+2025-09-15 10:51:26,709 | INFO | __main__:train_sentiment_model:206 - Negative articles: 13
+2025-09-15 10:51:26,715 | INFO | __main__:main:397 - Training completed successfully!

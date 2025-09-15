@@ -228,3 +228,17 @@
 2025-09-10 00:47:46,601 | INFO | __main__:train_informer_model:135 - Train MAE: 0.0000
 2025-09-10 00:47:46,601 | INFO | __main__:train_informer_model:136 - Validation MAE: 0.0000
 2025-09-10 00:47:46,603 | INFO | __main__:main:359 - Training completed successfully!
+2025-09-10 10:42:17,698 | INFO | __main__:train_sentiment_model:144 - Training sentiment analysis model...
+2025-09-10 10:42:17,699 | INFO | src.data.news_scraper:scrape_all_sources:94 - Scraping news from cnbc
+2025-09-10 10:42:19,168 | INFO | src.data.news_scraper:scrape_all_sources:97 - Scraped 0 articles from cnbc
+2025-09-10 10:42:21,169 | INFO | src.data.news_scraper:scrape_all_sources:94 - Scraping news from moneycontrol
+2025-09-10 10:42:22,125 | INFO | src.data.news_scraper:scrape_all_sources:97 - Scraped 0 articles from moneycontrol
+2025-09-10 10:42:24,126 | INFO | src.data.news_scraper:scrape_all_sources:94 - Scraping news from mint
+2025-09-10 10:42:27,820 | INFO | src.data.news_scraper:scrape_all_sources:97 - Scraped 0 articles from mint
+2025-09-10 10:42:29,823 | INFO | src.data.news_scraper:scrape_all_sources:94 - Scraping news from economic_times
+2025-09-10 10:42:31,687 | INFO | src.data.news_scraper:scrape_all_sources:97 - Scraped 0 articles from economic_times
+2025-09-10 10:42:33,687 | INFO | src.data.news_scraper:scrape_all_sources:94 - Scraping news from business_standard
+2025-09-10 10:42:34,321 | ERROR | src.data.news_scraper:_scrape_business_standard:262 - Error scraping Business Standard: 403 Client Error: Forbidden for url: https://www.business-standard.com/markets
+2025-09-10 10:42:34,323 | INFO | src.data.news_scraper:scrape_all_sources:97 - Scraped 0 articles from business_standard
+2025-09-10 10:42:36,324 | WARNING | __main__:train_sentiment_model:177 - No articles found for sentiment analysis
+2025-09-10 10:42:36,324 | INFO | __main__:main:359 - Training completed successfully!

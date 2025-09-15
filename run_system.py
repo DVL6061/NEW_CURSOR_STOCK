@@ -23,27 +23,22 @@ def check_dependencies():
     """Check if all required dependencies are installed"""
     logger.info("Checking dependencies...")
     
-    required_packages = [
-        'yfinance', 'pandas', 'numpy', 'sklearn', 'xgboost',
-        'torch', 'transformers', 'streamlit', 'fastapi', 'uvicorn',
-        'plotly', 'shap', 'requests', 'bs4'
-    ]
-    
-    missing_packages = []
-    
-    for package in required_packages:
-        try:
-            __import__(package)
-        except ImportError:
-            missing_packages.append(package)
-    
-    if missing_packages:
-        logger.error(f"Missing packages: {', '.join(missing_packages)}")
-        logger.info("Please install missing packages using: pip install -r requirements.txt")
+    # Simplified check using the requirements.txt for consistency
+    try:
+        import pkg_resources
+        with open('requirements.txt', 'r') as f:
+            requirements = [line.strip() for line in f if line.strip() and not line.startswith('#')]
+        pkg_resources.require(requirements)
+        logger.info("All dependencies are installed.")
+        return True
+    except (pkg_resources.DistributionNotFound, pkg_resources.VersionConflict) as e:
+        logger.error(f"Dependency issue: {e}")
+        logger.info("Please install/update packages using: pip install -r requirements.txt")
         return False
-    
-    logger.info("All dependencies are installed")
-    return True
+    except FileNotFoundError:
+        logger.error("requirements.txt not found. Cannot check dependencies.")
+        return False
+
 
 def setup_directories():
     """Setup required directories"""
@@ -53,12 +48,13 @@ def setup_directories():
         settings.DATA_DIR,
         settings.MODELS_DIR,
         settings.CONFIG_DIR,
+        settings.LOGS_DIR,
         settings.DATA_DIR / "real_time_cache"
     ]
     
     for directory in directories:
         directory.mkdir(parents=True, exist_ok=True)
-        logger.info(f"Created directory: {directory}")
+        logger.info(f"Ensured directory exists: {directory}")
     
     logger.info("Directory setup completed")
 
@@ -77,17 +73,24 @@ def run_backend():
         ]
         
         logger.info(f"Running command: {' '.join(cmd)}")
-        subprocess.run(cmd, check=True)
+        # Use Popen to run in the background without blocking
+        process = subprocess.Popen(cmd)
+        return process
         
-    except subprocess.CalledProcessError as e:
+    except Exception as e:
         logger.error(f"Backend failed to start: {e}")
-        raise
-    except KeyboardInterrupt:
-        logger.info("Backend stopped by user")
+        return None
 
 def run_frontend():
     """Run Streamlit frontend"""
     logger.info("Starting Streamlit frontend...")
+    
+    # Add a helpful, clear message for the user
+    logger.info("="*60)
+    logger.info("The system is starting the user interface.")
+    logger.info("Please open your web browser and go to the following URL:")
+    logger.info(f"    http://localhost:8501")
+    logger.info("="*60)
     
     try:
         # Start frontend server
@@ -95,7 +98,7 @@ def run_frontend():
             sys.executable, "-m", "streamlit",
             "run", "src/frontend/app.py",
             "--server.port", "8501",
-            "--server.address", "0.0.0.0"
+            "--server.address", "127.0.0.1" # Listen on all interfaces
         ]
         
         logger.info(f"Running command: {' '.join(cmd)}")
@@ -113,7 +116,8 @@ def run_training():
     
     try:
         # Run training script
-        cmd = [sys.executable, "train_models.py", "--model", "all"]
+        # Assuming train_model.py is at the root
+        cmd = [sys.executable, "train_model.py", "--model", "all"]
         
         logger.info(f"Running command: {' '.join(cmd)}")
         subprocess.run(cmd, check=True)
@@ -141,30 +145,35 @@ def run_full_system():
     """Run the complete system"""
     logger.info("Starting Enterprise Stock Forecasting System...")
     
-    # Check dependencies
-    if not check_dependencies():
-        return
-    
-    # Setup directories
+    if not check_dependencies(): return
     setup_directories()
     
     # Check if models exist, if not, train them
+    # A more robust check might be for a training report or a specific model file
     if not (settings.MODELS_DIR / "xgboost_model.pkl").exists():
-        logger.info("Models not found. Starting training...")
+        logger.warning("Models not found. Starting initial training...")
         run_training()
     
-    logger.info("System ready. Starting services...")
+    logger.info("System ready. Starting background and foreground services...")
     
-    # Start backend in background
-    import threading
-    backend_thread = threading.Thread(target=run_backend, daemon=True)
-    backend_thread.start()
-    
-    # Wait for backend to start
-    time.sleep(5)
-    
-    # Start frontend
-    run_frontend()
+    backend_process = None
+    try:
+        # Start backend in the background
+        backend_process = run_backend()
+        
+        # Wait for backend to initialize
+        logger.info("Waiting for backend to initialize (5s)...")
+        time.sleep(5)
+        
+        # Start frontend in the foreground (this will block)
+        run_frontend()
+        
+    finally:
+        if backend_process:
+            logger.info("Shutting down backend service...")
+            backend_process.terminate()
+            backend_process.wait()
+
 
 def main():
     """Main function"""
@@ -181,36 +190,38 @@ def main():
     
     try:
         if args.command == 'setup':
-            check_dependencies()
-            setup_directories()
-            logger.info("System setup completed")
+            if check_dependencies():
+                setup_directories()
+                logger.info("System setup completed")
         
         elif args.command == 'backend':
-            check_dependencies()
-            setup_directories()
-            run_backend()
+            if check_dependencies():
+                setup_directories()
+                process = run_backend()
+                if process:
+                    process.wait() # Wait for Ctrl+C
         
         elif args.command == 'frontend':
-            check_dependencies()
-            setup_directories()
-            run_frontend()
+            if check_dependencies():
+                setup_directories()
+                run_frontend()
         
         elif args.command == 'train':
-            check_dependencies()
-            setup_directories()
-            run_training()
+            if check_dependencies():
+                setup_directories()
+                run_training()
         
         elif args.command == 'test':
-            check_dependencies()
-            run_tests()
+            if check_dependencies():
+                run_tests()
         
         elif args.command == 'full':
             run_full_system()
-        
+            
     except KeyboardInterrupt:
-        logger.info("System stopped by user")
+        logger.info("System stopped by user.")
     except Exception as e:
-        logger.error(f"System error: {str(e)}")
+        logger.error(f"A system error occurred: {str(e)}")
         raise
 
 if __name__ == "__main__":

@@ -160,7 +160,11 @@ class FinBERTSentimentAnalyzer:
         """
         try:
             # Combine title and content for analysis
-            full_text = f"{article.title}. {article.content}"
+            if not article.content:
+                logger.warning(f"Article content is empty for {article.url}, using title only.")
+                full_text = article.title
+            else:
+                full_text = f"{article.title}. {article.content}"
             
             # Analyze sentiment
             sentiment_result = self.analyze_sentiment(full_text)
@@ -172,7 +176,7 @@ class FinBERTSentimentAnalyzer:
             return article
             
         except Exception as e:
-            logger.error(f"Error analyzing article sentiment: {str(e)}")
+            logger.error(f"Error analyzing article sentiment for {article.url}: {str(e)}")
             # Set neutral sentiment as fallback
             article.sentiment_score = 0.0
             article.sentiment_label = "neutral"
@@ -220,6 +224,7 @@ class FinBERTSentimentAnalyzer:
                 
                 # Process each result in the batch
                 for j, text in enumerate(batch_texts):
+                    original_text = batch_texts[j]
                     predicted_class = torch.argmax(probabilities[j], dim=-1).item()
                     confidence = probabilities[j][predicted_class].item()
                     sentiment_score = self._calculate_sentiment_score(probabilities[j])
@@ -231,7 +236,7 @@ class FinBERTSentimentAnalyzer:
                     )
                     
                     results.append(SentimentResult(
-                        text=text,
+                        text=original_text,
                         sentiment_score=enhanced_result['sentiment_score'],
                         sentiment_label=enhanced_result['sentiment_label'],
                         confidence=enhanced_result['confidence'],
@@ -259,6 +264,9 @@ class FinBERTSentimentAnalyzer:
             # Remove extra whitespace
             text = re.sub(r'\s+', ' ', text.strip())
             
+            # Remove URLs
+            text = re.sub(r'http\S+|www.\S+', '', text, flags=re.MULTILINE)
+
             # Remove special characters but keep financial symbols
             text = re.sub(r'[^\w\s$%.,!?]', ' ', text)
             
@@ -373,7 +381,7 @@ class FinBERTSentimentAnalyzer:
             
             # Calculate distribution percentages
             sentiment_distribution = {
-                label: (count / total_articles) * 100 
+                label: (count / total_articles) * 100 if total_articles > 0 else 0
                 for label, count in sentiment_counts.items()
             }
             
