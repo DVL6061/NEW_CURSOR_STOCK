@@ -378,8 +378,23 @@ class NewsScraper:
             with self.get_db_connection() as conn:
                 query = f"SELECT * FROM news_articles WHERE published_date >= date('now', '-{days} days') ORDER BY published_date DESC"
                 df = pd.read_sql_query(query, conn, parse_dates=['published_date'])
-                
-                articles = [NewsArticle(**row) for i, row in df.iterrows()]
+
+                articles: List[NewsArticle] = []
+                for _, row in df.iterrows():
+                    articles.append(
+                        NewsArticle(
+                            title=row.get('title', ''),
+                            content=row.get('content', ''),
+                            url=row.get('url', ''),
+                            source=row.get('source', ''),
+                            published_date=row.get('published_date'),
+                            sentiment_score=row.get('sentiment_score'),
+                            sentiment_label=row.get('sentiment_label'),
+                            language=row.get('language', 'en'),
+                            translated_title=row.get('translated_title'),
+                            translated_content=row.get('translated_content'),
+                        )
+                    )
                 return articles
         
         except Exception as e:

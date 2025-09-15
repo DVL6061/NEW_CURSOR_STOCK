@@ -221,20 +221,24 @@ class XGBoostStockPredictor:
             
             # Remove duplicates and sort
             available_features = sorted(list(set(available_features)))
-            
-            # Filter out non-numeric columns (except target columns)
+
+            # Ensure target columns are NOT part of feature set used at inference
+            target_columns = [self.target_column, 'future_direction', 'future_volatility']
+
+            # Filter out non-numeric columns (except target columns which we will exclude anyway)
             numeric_features = []
             for col in available_features:
-                if col in target_columns:
-                    numeric_features.append(col)
-                elif df[col].dtype in ['int64', 'float64', 'int32', 'float32']:
+                if df[col].dtype in ['int64', 'float64', 'int32', 'float32']:
                     numeric_features.append(col)
                 else:
                     logger.warning(f"Skipping non-numeric feature: {col} (dtype: {df[col].dtype})")
             
+            # Exclude targets from final feature list
+            numeric_features = [f for f in numeric_features if f not in target_columns]
+
             self.feature_names = numeric_features
             
-            return df[numeric_features]
+            return df[numeric_features + [c for c in target_columns if c in df.columns]]
             
         except Exception as e:
             logger.error(f"Error selecting features: {str(e)}")
@@ -375,7 +379,9 @@ class XGBoostStockPredictor:
         try:
             # Select only the features used in training
             if self.feature_names:
-                X_processed = X[self.feature_names].copy()
+                # Ensure we only pick intersection to avoid KeyErrors
+                cols = [c for c in self.feature_names if c in X.columns]
+                X_processed = X[cols].copy()
             else:
                 X_processed = X.copy()
             

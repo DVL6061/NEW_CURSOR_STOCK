@@ -83,8 +83,8 @@ class Settings(BaseSettings):
     }
     
     # API settings
-    API_HOST: str = "0.0.0.0"
-    API_PORT: int = 8000
+    API_HOST: str = "127.0.0.1"
+    API_PORT: int = 8001
     API_TITLE: str = "Stock Forecasting API"
     API_VERSION: str = "1.0.0"
     

@@ -315,20 +315,51 @@ class EnsembleStockPredictor:
         """Calculate ensemble confidence"""
         try:
             # Weighted average of individual confidences
+            # Safely extract scalar confidences
+            def _scalar(value, default=0.5):
+                try:
+                    import numpy as np
+                    if hasattr(value, 'item'):
+                        return float(value.item())
+                    if isinstance(value, (list, tuple)):
+                        return float(value[0]) if value else default
+                    if 'numpy' in str(type(value)):
+                        return float(np.array(value).flatten()[0])
+                    return float(value)
+                except Exception:
+                    return default
+
+            x_conf = _scalar(xgboost_pred.get('confidence', 0.5))
+            i_conf = _scalar(informer_pred.get('confidence', 0.5))
+            s_conf = _scalar(sentiment_pred.get('confidence', 0.5))
+
             weighted_confidence = (
-                self.model_weights['xgboost'] * xgboost_pred['confidence'] +
-                self.model_weights['informer'] * informer_pred['confidence'] +
-                self.model_weights['sentiment'] * sentiment_pred['confidence']
+                self.model_weights['xgboost'] * x_conf +
+                self.model_weights['informer'] * i_conf +
+                self.model_weights['sentiment'] * s_conf
             )
             
             # Adjust confidence based on prediction agreement
+            import numpy as np
+            def _scalar_pred(v, default=0.0):
+                try:
+                    if hasattr(v, 'item'):
+                        return float(v.item())
+                    if isinstance(v, (list, tuple)):
+                        return float(v[0]) if v else default
+                    if 'numpy' in str(type(v)):
+                        return float(np.array(v).flatten()[0])
+                    return float(v)
+                except Exception:
+                    return default
+
             predictions = [
-                xgboost_pred['prediction'],
-                informer_pred['prediction'],
-                sentiment_pred['prediction']
+                _scalar_pred(xgboost_pred.get('prediction', 0.0)),
+                _scalar_pred(informer_pred.get('prediction', 0.0)),
+                _scalar_pred(sentiment_pred.get('prediction', 0.0)),
             ]
-            
-            prediction_std = np.std(predictions)
+
+            prediction_std = float(np.std(predictions))
             agreement_factor = max(0.1, 1.0 - prediction_std)
             
             final_confidence = weighted_confidence * agreement_factor

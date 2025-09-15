@@ -61,3 +61,179 @@
 2025-09-15 10:51:26,705 | INFO | __main__:train_sentiment_model:205 - Positive articles: 8
 2025-09-15 10:51:26,709 | INFO | __main__:train_sentiment_model:206 - Negative articles: 13
 2025-09-15 10:51:26,715 | INFO | __main__:main:397 - Training completed successfully!
+2025-09-15 17:56:39,343 | INFO | __main__:run_full_training:334 - Starting full model training pipeline...
+2025-09-15 17:56:39,344 | INFO | __main__:prepare_training_data:75 - Preparing training data...
+2025-09-15 17:56:39,345 | INFO | __main__:prepare_training_data:79 - Fetching data for TATAMOTORS.NS...
+2025-09-15 17:56:39,490 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for TATAMOTORS.NS
+2025-09-15 17:56:39,511 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for TATAMOTORS.NS
+2025-09-15 17:56:40,536 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-15 17:56:40,537 | INFO | __main__:prepare_training_data:101 - Data prepared for TATAMOTORS.NS: 1239 samples
+2025-09-15 17:56:40,538 | INFO | __main__:prepare_training_data:79 - Fetching data for RELIANCE.NS...
+2025-09-15 17:56:40,598 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for RELIANCE.NS
+2025-09-15 17:56:40,611 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for RELIANCE.NS
+2025-09-15 17:56:41,588 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-15 17:56:41,589 | INFO | __main__:prepare_training_data:101 - Data prepared for RELIANCE.NS: 1239 samples
+2025-09-15 17:56:41,590 | INFO | __main__:prepare_training_data:79 - Fetching data for TCS.NS...
+2025-09-15 17:56:41,624 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for TCS.NS
+2025-09-15 17:56:41,652 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for TCS.NS
+2025-09-15 17:56:42,518 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-15 17:56:42,523 | INFO | __main__:prepare_training_data:101 - Data prepared for TCS.NS: 1239 samples
+2025-09-15 17:56:42,532 | INFO | __main__:prepare_training_data:107 - Training data prepared for 3 symbols
+2025-09-15 17:56:42,540 | INFO | __main__:train_xgboost_model:111 - Training XGBoost model...
+2025-09-15 17:56:42,728 | WARNING | src.models.xgboost_model:_select_features:233 - Skipping non-numeric feature: current_ratio (dtype: object)
+2025-09-15 17:56:42,737 | WARNING | src.models.xgboost_model:_select_features:233 - Skipping non-numeric feature: quick_ratio (dtype: object)
+2025-09-15 17:56:42,741 | WARNING | src.models.xgboost_model:_select_features:233 - Skipping non-numeric feature: roe (dtype: object)
+2025-09-15 17:56:42,742 | WARNING | src.models.xgboost_model:_select_features:233 - Skipping non-numeric feature: roi (dtype: object)
+2025-09-15 17:56:42,911 | INFO | src.models.xgboost_model:prepare_features:122 - Prepared 138 features for 1238 samples
+2025-09-15 17:56:42,915 | INFO | __main__:train_xgboost_model:127 - Prepared 1238 samples for TATAMOTORS.NS
+2025-09-15 17:56:43,064 | WARNING | src.models.xgboost_model:_select_features:233 - Skipping non-numeric feature: current_ratio (dtype: object)
+2025-09-15 17:56:43,071 | WARNING | src.models.xgboost_model:_select_features:233 - Skipping non-numeric feature: quick_ratio (dtype: object)
+2025-09-15 17:56:43,136 | WARNING | src.models.xgboost_model:_select_features:233 - Skipping non-numeric feature: roe (dtype: object)
+2025-09-15 17:56:43,170 | WARNING | src.models.xgboost_model:_select_features:233 - Skipping non-numeric feature: roi (dtype: object)
+2025-09-15 17:56:43,354 | INFO | src.models.xgboost_model:prepare_features:122 - Prepared 138 features for 1238 samples
+2025-09-15 17:56:43,361 | INFO | __main__:train_xgboost_model:127 - Prepared 1238 samples for RELIANCE.NS
+2025-09-15 17:56:43,494 | WARNING | src.models.xgboost_model:_select_features:233 - Skipping non-numeric feature: roi (dtype: object)
+2025-09-15 17:56:43,634 | INFO | src.models.xgboost_model:prepare_features:122 - Prepared 141 features for 1238 samples
+2025-09-15 17:56:43,636 | INFO | __main__:train_xgboost_model:127 - Prepared 1238 samples for TCS.NS
+2025-09-15 17:56:43,701 | INFO | __main__:train_xgboost_model:138 - Combined training data: 3714 samples
+2025-09-15 17:56:43,709 | INFO | src.models.xgboost_model:train:277 - Starting XGBoost model training...
+2025-09-15 17:57:48,473 | INFO | src.models.xgboost_model:save_model:463 - Model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\xgboost_model.pkl
+2025-09-15 17:57:48,478 | INFO | src.models.xgboost_model:train:329 - XGBoost model training completed successfully
+2025-09-15 17:57:48,490 | INFO | __main__:train_xgboost_model:144 - XGBoost model training completed
+2025-09-15 17:57:48,588 | INFO | __main__:train_xgboost_model:145 - Train MAE: 0.0003
+2025-09-15 17:57:48,604 | INFO | __main__:train_xgboost_model:146 - Validation MAE: 0.0058
+2025-09-15 17:57:48,641 | INFO | __main__:train_xgboost_model:147 - Test MAE: 0.0065
+2025-09-15 17:57:48,693 | INFO | __main__:train_informer_model:155 - Training Informer model...
+2025-09-15 17:57:48,744 | INFO | src.models.informer_model:train:273 - Starting Informer model training...
+2025-09-15 17:57:48,809 | INFO | src.models.informer_model:prepare_data:231 - Prepared 1120 sequences for Informer training
+2025-09-15 18:00:13,842 | INFO | src.models.informer_model:save_model:521 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-09-15 18:02:22,494 | INFO | src.models.informer_model:save_model:521 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-09-15 18:18:12,702 | INFO | src.models.informer_model:save_model:521 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-09-15 18:27:35,830 | INFO | src.models.informer_model:train:364 - Epoch 10/100, Train Loss: 0.059215, Val Loss: 0.147466
+2025-09-15 19:01:46,470 | INFO | src.models.informer_model:train:360 - Early stopping at epoch 17
+2025-09-15 19:01:47,159 | INFO | src.models.informer_model:load_model:537 - Informer model loaded successfully
+2025-09-15 19:01:47,187 | INFO | src.models.informer_model:load_model:541 - Informer scaler loaded successfully
+2025-09-15 19:01:47,194 | INFO | src.models.informer_model:load_model:545 - Informer config loaded successfully
+2025-09-15 19:01:47,495 | ERROR | src.models.informer_model:_evaluate_model:424 - Error evaluating model: The size of tensor a (896) must match the size of tensor b (96) at non-singleton dimension 0
+2025-09-15 19:01:47,558 | ERROR | src.models.informer_model:_evaluate_model:424 - Error evaluating model: The size of tensor a (224) must match the size of tensor b (96) at non-singleton dimension 0
+2025-09-15 19:01:47,564 | INFO | src.models.informer_model:train:374 - Informer model training completed successfully
+2025-09-15 19:01:47,674 | INFO | __main__:train_informer_model:166 - Informer model training completed
+2025-09-15 19:01:47,680 | INFO | __main__:train_informer_model:167 - Train MAE: 0.0000
+2025-09-15 19:01:47,684 | INFO | __main__:train_informer_model:168 - Validation MAE: 0.0000
+2025-09-15 19:01:47,688 | INFO | __main__:train_sentiment_model:176 - Training sentiment analysis model...
+2025-09-15 19:01:47,699 | INFO | src.data.news_scraper:scrape_all_sources:98 - Scraping news from cnbc
+2025-09-15 19:01:52,125 | INFO | src.data.news_scraper:scrape_all_sources:101 - Scraped 0 articles from cnbc
+2025-09-15 19:01:54,159 | INFO | src.data.news_scraper:scrape_all_sources:98 - Scraping news from moneycontrol
+2025-09-15 19:02:31,180 | INFO | src.data.news_scraper:scrape_all_sources:101 - Scraped 16 articles from moneycontrol
+2025-09-15 19:02:33,201 | INFO | src.data.news_scraper:scrape_all_sources:98 - Scraping news from mint
+2025-09-15 19:02:38,259 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/stock-market-news/us-fed-meet-begins-tomorrow-powell-expected-to-announce-interest-rate-cut-on-sept-17-amid-weakening-labor-market-11757937406254.html
+2025-09-15 19:02:38,799 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/ipo/urban-company-ipo-allotment-status-urban-company-ipo-gmp-urban-company-ipo-urban-company-ipo-subscription-11757908196465.html
+2025-09-15 19:02:43,399 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/ipo/airfloa-rail-technology-ipo-gmp-signals-118-listing-gains-check-subscription-price-band-and-other-details-11757576109206.html
+2025-09-15 19:02:43,766 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/stock-market-news/lic-share-price-jumps-20-in-six-months-can-insurance-behemoths-stock-cross-rs-1-000-mark-soon-11757935639699.html
+2025-09-15 19:02:44,120 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/ipo/dev-accelerator-ipo-gmp-dev-accelerator-ipo-allotment-status-dev-accelerator-ipo-allotment-date-dev-accelerator-ipo-11757908431124.html
+2025-09-15 19:02:44,848 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/market-stats
+2025-09-15 19:02:45,848 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/mark-to-market
+2025-09-15 19:02:46,494 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/mark-to-market
+2025-09-15 19:02:58,642 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/stock-market-news
+2025-09-15 19:02:59,141 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/stock-market-news/us-fed-meet-begins-tomorrow-powell-expected-to-announce-interest-rate-cut-on-sept-17-amid-weakening-labor-market-11757937406254.html
+2025-09-15 19:02:59,528 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/stock-market-news/lic-share-price-jumps-20-in-six-months-can-insurance-behemoths-stock-cross-rs-1-000-mark-soon-11757935639699.html
+2025-09-15 19:02:59,902 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/stock-market-news/top-gainers-losers-on-sep-15-anant-raj-vodafone-idea-radico-khaitan-railtel-ircon-among-top-gainers-today-11757930534922.html
+2025-09-15 19:03:00,408 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/stock-market-news/nifty-50-snaps-8-day-winning-run-sensex-sheds-100-points-10-key-highlights-from-indian-stock-market-today-11757930531081.html
+2025-09-15 19:03:00,424 | INFO | src.data.news_scraper:scrape_all_sources:101 - Scraped 7 articles from mint
+2025-09-15 19:04:32,867 | INFO | src.data.news_scraper:save_articles:370 - Saved/updated 23 articles in the database
+2025-09-15 19:04:32,871 | INFO | __main__:train_sentiment_model:203 - Sentiment analysis completed for 23 articles
+2025-09-15 19:04:32,874 | INFO | __main__:train_sentiment_model:204 - Average sentiment: 0.102
+2025-09-15 19:04:32,878 | INFO | __main__:train_sentiment_model:205 - Positive articles: 11
+2025-09-15 19:04:32,882 | INFO | __main__:train_sentiment_model:206 - Negative articles: 12
+2025-09-15 19:04:32,883 | INFO | __main__:setup_ensemble_model:217 - Setting up ensemble model...
+2025-09-15 19:04:33,151 | INFO | src.models.xgboost_model:load_model:473 - XGBoost model loaded successfully
+2025-09-15 19:04:33,157 | INFO | src.models.xgboost_model:load_model:477 - Scaler loaded successfully
+2025-09-15 19:04:33,162 | INFO | src.models.xgboost_model:load_model:481 - Label encoders loaded successfully
+2025-09-15 19:04:33,648 | INFO | src.models.informer_model:load_model:537 - Informer model loaded successfully
+2025-09-15 19:04:33,654 | INFO | src.models.informer_model:load_model:541 - Informer scaler loaded successfully
+2025-09-15 19:04:33,660 | INFO | src.models.informer_model:load_model:545 - Informer config loaded successfully
+2025-09-15 19:04:33,670 | INFO | src.models.ensemble_model:save_model:459 - Ensemble model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\ensemble_model.pkl
+2025-09-15 19:04:33,674 | INFO | __main__:setup_ensemble_model:227 - Ensemble model setup completed
+2025-09-15 19:04:33,676 | INFO | __main__:setup_shap_explainer:235 - Setting up SHAP explainer...
+2025-09-15 19:04:34,647 | INFO | src.models.shap_explainer:_initialize_explainer:42 - SHAP TreeExplainer initialized for XGBoost model
+2025-09-15 19:04:37,027 | INFO | src.models.shap_explainer:save_explainer:489 - SHAP explainer saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\shap_explainer.pkl
+2025-09-15 19:04:37,028 | INFO | __main__:setup_shap_explainer:244 - SHAP explainer setup completed
+2025-09-15 19:04:37,031 | INFO | __main__:evaluate_models:252 - Evaluating models...
+2025-09-15 19:04:37,032 | INFO | src.models.ensemble_model:predict:87 - Making ensemble prediction for TATAMOTORS.NS (short)
+2025-09-15 19:04:37,554 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for TATAMOTORS.NS
+2025-09-15 19:04:44,179 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-15 19:04:45,195 | INFO | src.models.xgboost_model:prepare_features:122 - Prepared 131 features for 1238 samples
+2025-09-15 19:04:45,242 | ERROR | src.models.xgboost_model:_prepare_prediction_features:402 - Error preparing prediction features: "['future_direction', 'future_return', 'future_volatility'] not in index"
+2025-09-15 19:04:45,329 | ERROR | src.models.xgboost_model:predict:370 - Error making predictions: "['future_direction', 'future_return', 'future_volatility'] not in index"
+2025-09-15 19:04:45,402 | ERROR | src.models.ensemble_model:_get_xgboost_prediction:218 - Error getting XGBoost prediction: "['future_direction', 'future_return', 'future_volatility'] not in index"
+2025-09-15 19:04:45,473 | INFO | src.models.informer_model:prepare_data:231 - Prepared 1120 sequences for Informer training
+2025-09-15 19:04:52,859 | ERROR | src.data.news_scraper:get_recent_articles:386 - Error retrieving recent articles: NewsArticle.__init__() got an unexpected keyword argument 'id'
+2025-09-15 19:04:52,865 | ERROR | src.models.ensemble_model:_calculate_ensemble_confidence:339 - Error calculating ensemble confidence: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-09-15 19:04:52,891 | INFO | src.models.ensemble_model:predict:157 - Ensemble prediction completed for TATAMOTORS.NS: Strong Buy
+2025-09-15 19:04:52,909 | INFO | __main__:evaluate_models:261 - Sample prediction for TATAMOTORS.NS:
+2025-09-15 19:04:53,898 | INFO | __main__:evaluate_models:264 -   Price Change: 124.95%
+2025-09-15 19:04:53,948 | INFO | __main__:evaluate_models:265 -   Recommendation: Strong Buy
+2025-09-15 19:04:53,975 | INFO | __main__:evaluate_models:266 -   Confidence: 50.0%
+2025-09-15 19:04:54,025 | INFO | __main__:evaluate_models:267 -   Risk Level: Low
+2025-09-15 19:04:54,078 | ERROR | src.models.shap_explainer:_prepare_features_for_shap:140 - Error preparing features for SHAP: "['adx_lag_1', 'adx_lag_10', 'adx_lag_2', 'adx_lag_3', 'adx_lag_5', 'close_lag_1', 'close_lag_10', 'close_lag_2', 'close_lag_3', 'close_lag_5', 'close_max_10', 'close_max_20', 'close_max_5', 'close_mean_10', 'close_mean_20', 'close_mean_5', 'close_min_10', 'close_min_20', 'close_min_5', 'close_std_10', 'close_std_20', 'close_std_5', 'debt_to_equity', 'gross_margin', 'log_return_10d', 'log_return_1d', 'log_return_20d', 'log_return_5d', 'macd_lag_1', 'macd_lag_10', 'macd_lag_2', 'macd_lag_3', 'macd_lag_5', 'market_cap', 'net_margin', 'operating_margin', 'pb_ratio', 'pe_ratio', 'return_10d', 'return_1d', 'return_20d', 'return_5d', 'rsi_lag_1', 'rsi_lag_10', 'rsi_lag_2', 'rsi_lag_3', 'rsi_lag_5', 'rsi_max_10', 'rsi_max_20', 'rsi_max_5', 'rsi_mean_10', 'rsi_mean_20', 'rsi_mean_5', 'rsi_min_10', 'rsi_min_20', 'rsi_min_5', 'rsi_std_10', 'rsi_std_20', 'rsi_std_5', 'volatility_10d', 'volatility_1d', 'volatility_20d', 'volatility_5d', 'volume_lag_1', 'volume_lag_10', 'volume_lag_2', 'volume_lag_3', 'volume_lag_5', 'volume_max_10', 'volume_max_20', 'volume_max_5', 'volume_mean_10', 'volume_mean_20', 'volume_mean_5', 'volume_min_10', 'volume_min_20', 'volume_min_5', 'volume_std_10', 'volume_std_20', 'volume_std_5', 'current_ratio', 'quick_ratio', 'roe'] not in index"
+2025-09-15 19:04:54,115 | ERROR | src.models.shap_explainer:explain_prediction:82 - Error explaining prediction: could not convert string to float: 'TATAMOTORS.NS'
+2025-09-15 19:04:54,153 | ERROR | src.models.shap_explainer:_get_fallback_explanation:473 - Error creating fallback explanation: bad operand type for abs(): 'str'
+2025-09-15 19:04:54,172 | INFO | __main__:evaluate_models:276 - SHAP explanation generated successfully
+2025-09-15 19:04:54,206 | WARNING | __main__:evaluate_models:281 - SHAP explanation failed: list index out of range
+2025-09-15 19:04:54,229 | INFO | __main__:save_training_report:301 - Saving training report...
+2025-09-15 19:04:54,327 | INFO | __main__:save_training_report:327 - Training report saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\training_report.json
+2025-09-15 19:04:54,348 | INFO | __main__:run_full_training:355 - Full training pipeline completed successfully!
+2025-09-15 19:04:54,361 | INFO | __main__:main:397 - Training completed successfully!
+2025-09-15 19:41:19,516 | INFO | __main__:run_full_training:334 - Starting full model training pipeline...
+2025-09-15 19:41:19,517 | INFO | __main__:prepare_training_data:75 - Preparing training data...
+2025-09-15 19:41:19,518 | INFO | __main__:prepare_training_data:79 - Fetching data for TATAMOTORS.NS...
+2025-09-15 19:41:19,643 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for TATAMOTORS.NS
+2025-09-15 19:41:19,718 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for TATAMOTORS.NS
+2025-09-15 19:41:20,964 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-15 19:41:20,971 | INFO | __main__:prepare_training_data:101 - Data prepared for TATAMOTORS.NS: 1239 samples
+2025-09-15 19:41:20,971 | INFO | __main__:prepare_training_data:79 - Fetching data for RELIANCE.NS...
+2025-09-15 19:41:21,060 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for RELIANCE.NS
+2025-09-15 19:41:21,138 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for RELIANCE.NS
+2025-09-15 19:41:22,394 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-15 19:41:22,395 | INFO | __main__:prepare_training_data:101 - Data prepared for RELIANCE.NS: 1239 samples
+2025-09-15 19:41:22,396 | INFO | __main__:prepare_training_data:79 - Fetching data for TCS.NS...
+2025-09-15 19:41:22,516 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for TCS.NS
+2025-09-15 19:41:22,591 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for TCS.NS
+2025-09-15 19:41:23,945 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-15 19:41:23,953 | INFO | __main__:prepare_training_data:101 - Data prepared for TCS.NS: 1239 samples
+2025-09-15 19:41:23,959 | INFO | __main__:prepare_training_data:107 - Training data prepared for 3 symbols
+2025-09-15 19:41:23,962 | INFO | __main__:train_xgboost_model:111 - Training XGBoost model...
+2025-09-15 19:41:24,148 | WARNING | src.models.xgboost_model:_select_features:234 - Skipping non-numeric feature: current_ratio (dtype: object)
+2025-09-15 19:41:24,161 | WARNING | src.models.xgboost_model:_select_features:234 - Skipping non-numeric feature: quick_ratio (dtype: object)
+2025-09-15 19:41:24,174 | WARNING | src.models.xgboost_model:_select_features:234 - Skipping non-numeric feature: roe (dtype: object)
+2025-09-15 19:41:24,226 | WARNING | src.models.xgboost_model:_select_features:234 - Skipping non-numeric feature: roi (dtype: object)
+2025-09-15 19:41:24,489 | INFO | src.models.xgboost_model:prepare_features:122 - Prepared 138 features for 1238 samples
+2025-09-15 19:41:24,534 | INFO | __main__:train_xgboost_model:127 - Prepared 1238 samples for TATAMOTORS.NS
+2025-09-15 19:41:24,741 | WARNING | src.models.xgboost_model:_select_features:234 - Skipping non-numeric feature: current_ratio (dtype: object)
+2025-09-15 19:41:24,747 | WARNING | src.models.xgboost_model:_select_features:234 - Skipping non-numeric feature: quick_ratio (dtype: object)
+2025-09-15 19:41:24,759 | WARNING | src.models.xgboost_model:_select_features:234 - Skipping non-numeric feature: roe (dtype: object)
+2025-09-15 19:41:24,777 | WARNING | src.models.xgboost_model:_select_features:234 - Skipping non-numeric feature: roi (dtype: object)
+2025-09-15 19:41:25,037 | INFO | src.models.xgboost_model:prepare_features:122 - Prepared 138 features for 1238 samples
+2025-09-15 19:41:25,076 | INFO | __main__:train_xgboost_model:127 - Prepared 1238 samples for RELIANCE.NS
+2025-09-15 19:41:25,285 | WARNING | src.models.xgboost_model:_select_features:234 - Skipping non-numeric feature: roi (dtype: object)
+2025-09-15 19:41:25,474 | INFO | src.models.xgboost_model:prepare_features:122 - Prepared 141 features for 1238 samples
+2025-09-15 19:41:25,507 | INFO | __main__:train_xgboost_model:127 - Prepared 1238 samples for TCS.NS
+2025-09-15 19:41:25,611 | INFO | __main__:train_xgboost_model:138 - Combined training data: 3714 samples
+2025-09-15 19:41:25,618 | INFO | src.models.xgboost_model:train:281 - Starting XGBoost model training...
+2025-09-15 19:41:41,653 | INFO | src.models.xgboost_model:save_model:469 - Model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\xgboost_model.pkl
+2025-09-15 19:41:41,654 | INFO | src.models.xgboost_model:train:333 - XGBoost model training completed successfully
+2025-09-15 19:41:41,658 | INFO | __main__:train_xgboost_model:144 - XGBoost model training completed
+2025-09-15 19:41:41,659 | INFO | __main__:train_xgboost_model:145 - Train MAE: 0.0003
+2025-09-15 19:41:41,660 | INFO | __main__:train_xgboost_model:146 - Validation MAE: 0.0058
+2025-09-15 19:41:41,661 | INFO | __main__:train_xgboost_model:147 - Test MAE: 0.0065
+2025-09-15 19:41:41,666 | INFO | __main__:train_informer_model:155 - Training Informer model...
+2025-09-15 19:41:41,668 | INFO | src.models.informer_model:train:273 - Starting Informer model training...
+2025-09-15 19:41:41,687 | INFO | src.models.informer_model:prepare_data:231 - Prepared 1120 sequences for Informer training
+2025-09-15 19:43:54,391 | INFO | src.models.informer_model:save_model:521 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-09-15 19:46:32,080 | INFO | src.models.informer_model:save_model:521 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-09-15 19:51:02,387 | INFO | src.models.informer_model:save_model:521 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-09-15 19:57:36,698 | INFO | src.models.informer_model:save_model:521 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-09-15 20:02:57,573 | ERROR | src.models.informer_model:train:386 - Error training Informer model: [enforce fail at alloc_cpu.cpp:121] data. DefaultCPUAllocator: not enough memory: you tried to allocate 9437184 bytes.
+2025-09-15 20:02:57,821 | ERROR | __main__:train_informer_model:171 - Error training Informer model: [enforce fail at alloc_cpu.cpp:121] data. DefaultCPUAllocator: not enough memory: you tried to allocate 9437184 bytes.
+2025-09-15 20:02:58,053 | ERROR | __main__:run_full_training:358 - Training pipeline failed: [enforce fail at alloc_cpu.cpp:121] data. DefaultCPUAllocator: not enough memory: you tried to allocate 9437184 bytes.
+2025-09-15 20:02:58,079 | ERROR | __main__:main:400 - Training failed: [enforce fail at alloc_cpu.cpp:121] data. DefaultCPUAllocator: not enough memory: you tried to allocate 9437184 bytes.

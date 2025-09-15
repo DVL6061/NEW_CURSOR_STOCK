@@ -58,8 +58,8 @@ class SHAPExplainer:
             Dictionary with SHAP explanations
         """
         try:
-            if self.explainer is None:
-                logger.warning("SHAP explainer not initialized")
+            if self.explainer is None or xgboost_predictor.model is None:
+                logger.warning("SHAP explainer not initialized or model missing; using fallback explanation")
                 return self._get_fallback_explanation(X, prediction_result)
             
             # Prepare features for SHAP
@@ -124,9 +124,12 @@ class SHAPExplainer:
         try:
             # Select only the features used in the model
             if self.feature_names:
-                X_selected = X[self.feature_names].copy()
+                cols = [c for c in self.feature_names if c in X.columns]
+                if not cols:
+                    raise ValueError("No overlapping features for SHAP explanation")
+                X_selected = X[cols].copy()
             else:
-                X_selected = X.copy()
+                X_selected = X.select_dtypes(include=['number']).copy()
             
             # Handle missing values
             X_selected = X_selected.fillna(0)
@@ -449,8 +452,13 @@ class SHAPExplainer:
                 feature_values = X
                 feature_names = [f"feature_{i}" for i in range(len(feature_values))]
             
-            # Create simple importance based on absolute values
-            importance = np.abs(feature_values)
+            # Create simple importance based on absolute values (numeric only)
+            try:
+                fv = np.array(feature_values, dtype=float)
+                importance = np.abs(fv)
+            except Exception:
+                # If conversion fails, fall back to zeros to avoid crashes
+                importance = np.zeros(len(feature_values))
             importance_indices = np.argsort(importance)[::-1]
             
             top_features = []
