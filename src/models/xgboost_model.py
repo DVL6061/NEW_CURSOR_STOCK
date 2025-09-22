@@ -379,9 +379,18 @@ class XGBoostStockPredictor:
         try:
             # Select only the features used in training
             if self.feature_names:
-                # Ensure we only pick intersection to avoid KeyErrors
-                cols = [c for c in self.feature_names if c in X.columns]
-                X_processed = X[cols].copy()
+                # Build DataFrame with all training features; fill missing with 0
+                cols_present = [c for c in self.feature_names if c in X.columns]
+                X_processed = pd.DataFrame(index=X.index)
+                # add present columns first (preserve values)
+                for c in cols_present:
+                    X_processed[c] = X[c]
+                # add missing columns as zeros
+                missing_cols = [c for c in self.feature_names if c not in cols_present]
+                for c in missing_cols:
+                    X_processed[c] = 0.0
+                # ensure column order exactly matches training feature order
+                X_processed = X_processed[self.feature_names]
             else:
                 X_processed = X.copy()
             

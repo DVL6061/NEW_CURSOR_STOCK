@@ -128,6 +128,28 @@ class EnsembleStockPredictor:
             # Get technical signals
             technical_signals = self._get_technical_signals(current_data)
             
+            # Coerce model outputs to plain floats for API schema
+            def _to_float(value, default=0.0):
+                try:
+                    import numpy as np
+                    if hasattr(value, 'item'):
+                        return float(value.item())
+                    if isinstance(value, (list, tuple)):
+                        return float(value[0]) if value else default
+                    if 'numpy' in str(type(value)):
+                        return float(np.array(value).flatten()[0])
+                    return float(value)
+                except Exception:
+                    return default
+
+            mp_x = _to_float(xgboost_pred.get('prediction', 0.0))
+            mp_i = _to_float(informer_pred.get('prediction', 0.0))
+            mp_s = _to_float(sentiment_pred.get('prediction', 0.0))
+
+            mc_x = _to_float(xgboost_pred.get('confidence', 0.5), 0.5)
+            mc_i = _to_float(informer_pred.get('confidence', 0.5), 0.5)
+            mc_s = _to_float(sentiment_pred.get('confidence', 0.5), 0.5)
+
             # Create result
             result = PredictionResult(
                 symbol=symbol,
@@ -140,14 +162,14 @@ class EnsembleStockPredictor:
                 timeframe=timeframe,
                 prediction_date=datetime.now(),
                 model_predictions={
-                    'xgboost': xgboost_pred,
-                    'informer': informer_pred,
-                    'sentiment': sentiment_pred
+                    'xgboost': mp_x,
+                    'informer': mp_i,
+                    'sentiment': mp_s
                 },
                 model_confidences={
-                    'xgboost': xgboost_pred.get('confidence', 0.5),
-                    'informer': informer_pred.get('confidence', 0.5),
-                    'sentiment': sentiment_pred.get('confidence', 0.5)
+                    'xgboost': mc_x,
+                    'informer': mc_i,
+                    'sentiment': mc_s
                 },
                 sentiment_score=sentiment_pred.get('sentiment_score', 0.0),
                 technical_signals=technical_signals,
@@ -193,15 +215,21 @@ class EnsembleStockPredictor:
             if xgboost_predictor.model is None:
                 xgboost_predictor.load_model()
             
-            # Prepare features
-            features_df = xgboost_predictor.prepare_features(data)
+            # Fetch latest fundamentals and prepare features including fundamentals
+            try:
+                from src.data.yahoo_finance import yahoo_data as _yahoo
+                fundamentals = _yahoo.fetch_fundamental_data(symbol, use_cache=True)
+            except Exception:
+                fundamentals = None
+
+            features_df = xgboost_predictor.prepare_features(data, fundamental_data=fundamentals)
             
             if features_df.empty:
                 return {'prediction': 0.0, 'confidence': 0.5}
             
             # Get latest features
             latest_features = features_df.iloc[-1:].drop(
-                columns=[xgboost_predictor.target_column, 'future_direction', 'future_volatility'], 
+                columns=[xgboost_predictor.target_column, 'future_direction', 'future_volatility'],
                 errors='ignore'
             )
             
