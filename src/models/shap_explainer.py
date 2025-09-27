@@ -155,11 +155,11 @@ class SHAPExplainer:
                 'feature': feature_names,
                 'value': X[0] if len(X.shape) > 1 else X,
                 'shap_value': shap_values[0] if len(shap_values.shape) > 1 else shap_values,
-                'abs_shap_value': np.abs(shap_values[0] if len(shap_values.shape) > 1 else shap_values)
+                'importance': np.abs(shap_values[0] if len(shap_values.shape) > 1 else shap_values)
             })
             
             # Sort by absolute SHAP value
-            feature_importance = feature_importance.sort_values('abs_shap_value', ascending=False)
+            feature_importance = feature_importance.sort_values('importance', ascending=False)
             
             # Get top contributing features
             top_features = feature_importance.head(10)
@@ -248,7 +248,7 @@ class SHAPExplainer:
                     'name': feature_name,
                     'value': row['value'],
                     'shap_value': row['shap_value'],
-                    'importance': row['abs_shap_value']
+                    'importance': row['importance']
                 }
                 
                 # Categorize based on feature name

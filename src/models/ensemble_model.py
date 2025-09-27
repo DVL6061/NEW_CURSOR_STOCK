@@ -142,6 +142,22 @@ class EnsembleStockPredictor:
                 except Exception:
                     return default
 
+            def _to_native_type(value):
+                """Convert numpy types to native Python types"""
+                try:
+                    import numpy as np
+                    if hasattr(value, 'item'):
+                        return value.item()
+                    if isinstance(value, np.ndarray):
+                        return value.tolist()
+                    if isinstance(value, (np.integer, np.floating)):
+                        return float(value)
+                    if isinstance(value, (np.bool_, bool)):
+                        return bool(value)
+                    return value
+                except Exception:
+                    return value
+
             mp_x = _to_float(xgboost_pred.get('prediction', 0.0))
             mp_i = _to_float(informer_pred.get('prediction', 0.0))
             mp_s = _to_float(sentiment_pred.get('prediction', 0.0))
@@ -149,6 +165,14 @@ class EnsembleStockPredictor:
             mc_x = _to_float(xgboost_pred.get('confidence', 0.5), 0.5)
             mc_i = _to_float(informer_pred.get('confidence', 0.5), 0.5)
             mc_s = _to_float(sentiment_pred.get('confidence', 0.5), 0.5)
+
+            # Convert all values to native Python types
+            current_price = _to_native_type(current_price)
+            predicted_price = _to_native_type(predicted_price)
+            price_change = _to_native_type(price_change)
+            price_change_percent = _to_native_type(price_change_percent)
+            confidence = _to_native_type(confidence)
+            sentiment_score = _to_native_type(sentiment_pred.get('sentiment_score', 0.0))
 
             # Create result
             result = PredictionResult(
@@ -215,27 +239,19 @@ class EnsembleStockPredictor:
             if xgboost_predictor.model is None:
                 xgboost_predictor.load_model()
             
-            # Fetch latest fundamentals and prepare features including fundamentals
+            # Fetch latest fundamentals
             try:
                 from src.data.yahoo_finance import yahoo_data as _yahoo
                 fundamentals = _yahoo.fetch_fundamental_data(symbol, use_cache=True)
             except Exception:
                 fundamentals = None
 
-            features_df = xgboost_predictor.prepare_features(data, fundamental_data=fundamentals)
+            # Get latest features (without preparing all features, just get the raw data)
+            latest_features = data.iloc[-1:]
             
-            if features_df.empty:
-                return {'prediction': 0.0, 'confidence': 0.5}
-            
-            # Get latest features
-            latest_features = features_df.iloc[-1:].drop(
-                columns=[xgboost_predictor.target_column, 'future_direction', 'future_volatility'],
-                errors='ignore'
-            )
-            
-            # Make prediction
-            prediction = xgboost_predictor.predict(latest_features)[0]
-            confidence = xgboost_predictor.get_prediction_confidence(latest_features)[0]
+            # Make prediction with fundamental data
+            prediction = xgboost_predictor.predict(latest_features, fundamental_data=fundamentals)[0]
+            confidence = xgboost_predictor.get_prediction_confidence(latest_features, fundamental_data=fundamentals)[0]
             
             return {
                 'prediction': prediction,
@@ -442,13 +458,27 @@ class EnsembleStockPredictor:
         try:
             latest = data.iloc[-1]
             
+            def _to_native_type(value):
+                """Convert numpy types to native Python types"""
+                try:
+                    import numpy as np
+                    if hasattr(value, 'item'):
+                        return value.item()
+                    if isinstance(value, (np.integer, np.floating)):
+                        return float(value)
+                    if isinstance(value, (np.bool_, bool)):
+                        return bool(value)
+                    return value
+                except Exception:
+                    return value
+            
             signals = {
-                'rsi': latest.get('rsi', 50),
-                'macd_signal': latest.get('macd_signal_type', 'Neutral'),
-                'trend_strength': latest.get('trend_strength', 0),
-                'bb_position': latest.get('bb_position', 'Middle'),
-                'volume_ratio': latest.get('volume_ratio', 1.0),
-                'adx': latest.get('adx', 25)
+                'rsi': _to_native_type(latest.get('rsi', 50)),
+                'macd_signal': str(latest.get('macd_signal_type', 'Neutral')),
+                'trend_strength': _to_native_type(latest.get('trend_strength', 0)),
+                'bb_position': str(latest.get('bb_position', 'Middle')),
+                'volume_ratio': _to_native_type(latest.get('volume_ratio', 1.0)),
+                'adx': _to_native_type(latest.get('adx', 25))
             }
             
             # Generate signal interpretations

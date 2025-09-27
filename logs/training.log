@@ -237,3 +237,45 @@
 2025-09-15 20:02:57,821 | ERROR | __main__:train_informer_model:171 - Error training Informer model: [enforce fail at alloc_cpu.cpp:121] data. DefaultCPUAllocator: not enough memory: you tried to allocate 9437184 bytes.
 2025-09-15 20:02:58,053 | ERROR | __main__:run_full_training:358 - Training pipeline failed: [enforce fail at alloc_cpu.cpp:121] data. DefaultCPUAllocator: not enough memory: you tried to allocate 9437184 bytes.
 2025-09-15 20:02:58,079 | ERROR | __main__:main:400 - Training failed: [enforce fail at alloc_cpu.cpp:121] data. DefaultCPUAllocator: not enough memory: you tried to allocate 9437184 bytes.
+2025-09-27 10:51:46,297 | INFO | __main__:prepare_training_data:75 - Preparing training data...
+2025-09-27 10:51:46,303 | INFO | __main__:prepare_training_data:79 - Fetching data for TATAMOTORS.NS...
+2025-09-27 10:51:46,433 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for TATAMOTORS.NS
+2025-09-27 10:51:46,458 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for TATAMOTORS.NS
+2025-09-27 10:51:48,597 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-27 10:51:48,601 | INFO | __main__:prepare_training_data:101 - Data prepared for TATAMOTORS.NS: 1239 samples
+2025-09-27 10:51:48,604 | INFO | __main__:prepare_training_data:79 - Fetching data for RELIANCE.NS...
+2025-09-27 10:51:48,685 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for RELIANCE.NS
+2025-09-27 10:51:48,704 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for RELIANCE.NS
+2025-09-27 10:51:51,199 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-27 10:51:51,200 | INFO | __main__:prepare_training_data:101 - Data prepared for RELIANCE.NS: 1239 samples
+2025-09-27 10:51:51,201 | INFO | __main__:prepare_training_data:79 - Fetching data for TCS.NS...
+2025-09-27 10:51:51,257 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for TCS.NS
+2025-09-27 10:51:51,267 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for TCS.NS
+2025-09-27 10:51:53,874 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-09-27 10:51:53,876 | INFO | __main__:prepare_training_data:101 - Data prepared for TCS.NS: 1239 samples
+2025-09-27 10:51:53,882 | INFO | __main__:prepare_training_data:107 - Training data prepared for 3 symbols
+2025-09-27 10:51:53,885 | INFO | __main__:train_xgboost_model:111 - Training XGBoost model...
+2025-09-27 10:51:54,120 | INFO | src.models.xgboost_model:_select_features:255 - Converted fundamental feature current_ratio to numeric
+2025-09-27 10:51:54,132 | INFO | src.models.xgboost_model:_select_features:255 - Converted fundamental feature quick_ratio to numeric
+2025-09-27 10:51:54,136 | INFO | src.models.xgboost_model:_select_features:255 - Converted fundamental feature roe to numeric
+2025-09-27 10:51:54,142 | INFO | src.models.xgboost_model:_select_features:255 - Converted fundamental feature roi to numeric
+2025-09-27 10:51:54,578 | INFO | src.models.xgboost_model:prepare_features:122 - Prepared 142 features for 1238 samples
+2025-09-27 10:51:54,583 | INFO | __main__:train_xgboost_model:127 - Prepared 1238 samples for TATAMOTORS.NS
+2025-09-27 10:51:54,850 | INFO | src.models.xgboost_model:_select_features:255 - Converted fundamental feature current_ratio to numeric
+2025-09-27 10:51:54,865 | INFO | src.models.xgboost_model:_select_features:255 - Converted fundamental feature quick_ratio to numeric
+2025-09-27 10:51:54,875 | INFO | src.models.xgboost_model:_select_features:255 - Converted fundamental feature roe to numeric
+2025-09-27 10:51:54,891 | INFO | src.models.xgboost_model:_select_features:255 - Converted fundamental feature roi to numeric
+2025-09-27 10:51:55,250 | INFO | src.models.xgboost_model:prepare_features:122 - Prepared 142 features for 1238 samples
+2025-09-27 10:51:55,255 | INFO | __main__:train_xgboost_model:127 - Prepared 1238 samples for RELIANCE.NS
+2025-09-27 10:51:55,570 | INFO | src.models.xgboost_model:_select_features:255 - Converted fundamental feature roi to numeric
+2025-09-27 10:51:56,248 | INFO | src.models.xgboost_model:prepare_features:122 - Prepared 142 features for 1238 samples
+2025-09-27 10:51:56,261 | INFO | __main__:train_xgboost_model:127 - Prepared 1238 samples for TCS.NS
+2025-09-27 10:51:56,402 | INFO | __main__:train_xgboost_model:138 - Combined training data: 3714 samples
+2025-09-27 10:51:56,451 | INFO | src.models.xgboost_model:train:306 - Starting XGBoost model training...
+2025-09-27 10:52:15,468 | INFO | src.models.xgboost_model:save_model:515 - Model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\xgboost_model.pkl
+2025-09-27 10:52:15,471 | INFO | src.models.xgboost_model:train:358 - XGBoost model training completed successfully
+2025-09-27 10:52:15,480 | INFO | __main__:train_xgboost_model:144 - XGBoost model training completed
+2025-09-27 10:52:15,482 | INFO | __main__:train_xgboost_model:145 - Train MAE: 0.0003
+2025-09-27 10:52:15,482 | INFO | __main__:train_xgboost_model:146 - Validation MAE: 0.0061
+2025-09-27 10:52:15,483 | INFO | __main__:train_xgboost_model:147 - Test MAE: 0.0064
+2025-09-27 10:52:15,487 | INFO | __main__:main:397 - Training completed successfully!

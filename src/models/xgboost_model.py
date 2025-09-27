@@ -132,7 +132,23 @@ class XGBoostStockPredictor:
         try:
             for feature in self.fundamental_features:
                 if feature in fundamental_data:
-                    df[feature] = fundamental_data[feature]
+                    value = fundamental_data[feature]
+                    # Convert string values to numeric, handling various formats
+                    if isinstance(value, str):
+                        # Handle percentage strings like "15.5%"
+                        if '%' in value:
+                            try:
+                                df[feature] = float(value.replace('%', '')) / 100
+                            except ValueError:
+                                df[feature] = np.nan
+                        # Handle other string formats
+                        else:
+                            try:
+                                df[feature] = float(value)
+                            except (ValueError, TypeError):
+                                df[feature] = np.nan
+                    else:
+                        df[feature] = value
                 else:
                     df[feature] = np.nan
             
@@ -231,7 +247,16 @@ class XGBoostStockPredictor:
                 if df[col].dtype in ['int64', 'float64', 'int32', 'float32']:
                     numeric_features.append(col)
                 else:
-                    logger.warning(f"Skipping non-numeric feature: {col} (dtype: {df[col].dtype})")
+                    # Try to convert to numeric for fundamental features
+                    if col in self.fundamental_features:
+                        try:
+                            df[col] = pd.to_numeric(df[col], errors='coerce')
+                            numeric_features.append(col)
+                            logger.info(f"Converted fundamental feature {col} to numeric")
+                        except Exception:
+                            logger.warning(f"Could not convert fundamental feature {col} to numeric")
+                    else:
+                        logger.warning(f"Skipping non-numeric feature: {col} (dtype: {df[col].dtype})")
             
             # Exclude targets from final feature list
             numeric_features = [f for f in numeric_features if f not in target_columns]
@@ -345,12 +370,14 @@ class XGBoostStockPredictor:
             logger.error(f"Error training XGBoost model: {str(e)}")
             raise
     
-    def predict(self, X: pd.DataFrame) -> np.ndarray:
+    def predict(self, X: pd.DataFrame, fundamental_data: Dict = None, sentiment_data: Dict = None) -> np.ndarray:
         """
         Make predictions using trained model
         
         Args:
             X: DataFrame with features
+            fundamental_data: Dictionary with fundamental metrics
+            sentiment_data: Dictionary with sentiment metrics
         
         Returns:
             Array of predictions
@@ -360,7 +387,7 @@ class XGBoostStockPredictor:
                 raise ValueError("Model not trained. Please train the model first.")
             
             # Prepare features
-            X_processed = self._prepare_prediction_features(X)
+            X_processed = self._prepare_prediction_features(X, fundamental_data, sentiment_data)
             
             # Scale features
             X_scaled = self.scaler.transform(X_processed)
@@ -374,25 +401,31 @@ class XGBoostStockPredictor:
             logger.error(f"Error making predictions: {str(e)}")
             raise
     
-    def _prepare_prediction_features(self, X: pd.DataFrame) -> pd.DataFrame:
-        """Prepare features for prediction"""
+    def _prepare_prediction_features(self, X: pd.DataFrame, fundamental_data: Dict = None, sentiment_data: Dict = None) -> pd.DataFrame:
+        """Prepare features for prediction, ensuring all training features are present."""
         try:
+            # Ensure fundamental and sentiment data are incorporated if available
+            if fundamental_data:
+                X = self._add_fundamental_features(X, fundamental_data)
+            if sentiment_data:
+                X = self._add_sentiment_features(X, sentiment_data)
+
             # Select only the features used in training
             if self.feature_names:
-                # Build DataFrame with all training features; fill missing with 0
-                cols_present = [c for c in self.feature_names if c in X.columns]
-                X_processed = pd.DataFrame(index=X.index)
-                # add present columns first (preserve values)
-                for c in cols_present:
-                    X_processed[c] = X[c]
-                # add missing columns as zeros
-                missing_cols = [c for c in self.feature_names if c not in cols_present]
-                for c in missing_cols:
-                    X_processed[c] = 0.0
-                # ensure column order exactly matches training feature order
-                X_processed = X_processed[self.feature_names]
+                # Create a DataFrame with all expected features, filled with 0
+                # This ensures that if a feature was present during training but not in current X, it's added
+                # And if a feature is in X but not in training, it's dropped
+                X_processed = pd.DataFrame(0.0, index=X.index, columns=self.feature_names)
+                
+                # Fill with actual data where available
+                for col in self.feature_names:
+                    if col in X.columns:
+                        X_processed[col] = X[col]
+                    else:
+                        logger.warning(f"Feature '{col}' missing in prediction data, filling with 0.")
             else:
-                X_processed = X.copy()
+                logger.warning("Feature names not set in XGBoost model. Using all available numeric features.")
+                X_processed = X.select_dtypes(include=[np.number]).copy()
             
             # Handle categorical features
             categorical_columns = [
@@ -475,6 +508,10 @@ class XGBoostStockPredictor:
             # Save label encoders
             joblib.dump(self.label_encoders, self.encoders_path)
             
+            # Save feature names
+            features_path = settings.MODELS_DIR / "xgboost_features.pkl"
+            joblib.dump(self.feature_names, features_path)
+            
             logger.info(f"Model saved to {self.model_path}")
             
         except Exception as e:
@@ -495,10 +532,18 @@ class XGBoostStockPredictor:
                 self.label_encoders = joblib.load(self.encoders_path)
                 logger.info("Label encoders loaded successfully")
             
+            # Load feature names
+            features_path = settings.MODELS_DIR / "xgboost_features.pkl"
+            if features_path.exists():
+                self.feature_names = joblib.load(features_path)
+                logger.info(f"Feature names loaded successfully: {len(self.feature_names)} features")
+            else:
+                logger.warning("Feature names file not found")
+            
         except Exception as e:
             logger.error(f"Error loading model: {str(e)}")
     
-    def get_prediction_confidence(self, X: pd.DataFrame) -> np.ndarray:
+    def get_prediction_confidence(self, X: pd.DataFrame, fundamental_data: Dict = None, sentiment_data: Dict = None) -> np.ndarray:
         """Get prediction confidence (using prediction variance)"""
         try:
             if self.model is None:
@@ -508,7 +553,7 @@ class XGBoostStockPredictor:
             # This is a simplified approach - in practice, you might want to use
             # ensemble methods or Bayesian approaches for better uncertainty quantification
             
-            predictions = self.predict(X)
+            predictions = self.predict(X, fundamental_data, sentiment_data)
             
             # Calculate confidence based on feature importance and prediction magnitude
             confidence = np.ones_like(predictions) * 0.8  # Base confidence
