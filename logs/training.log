@@ -279,3 +279,268 @@
 2025-09-27 10:52:15,482 | INFO | __main__:train_xgboost_model:146 - Validation MAE: 0.0061
 2025-09-27 10:52:15,483 | INFO | __main__:train_xgboost_model:147 - Test MAE: 0.0064
 2025-09-27 10:52:15,487 | INFO | __main__:main:397 - Training completed successfully!
+2025-10-09 11:41:46,028 | INFO | __main__:run_full_training:334 - Starting full model training pipeline...
+2025-10-09 11:41:46,029 | INFO | __main__:prepare_training_data:75 - Preparing training data...
+2025-10-09 11:41:46,029 | INFO | __main__:prepare_training_data:79 - Fetching data for TATAMOTORS.NS...
+2025-10-09 11:41:46,132 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for TATAMOTORS.NS
+2025-10-09 11:41:46,137 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for TATAMOTORS.NS
+2025-10-09 11:41:46,546 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-10-09 11:41:46,546 | INFO | __main__:prepare_training_data:101 - Data prepared for TATAMOTORS.NS: 1239 samples
+2025-10-09 11:41:46,547 | INFO | __main__:prepare_training_data:79 - Fetching data for RELIANCE.NS...
+2025-10-09 11:41:46,571 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for RELIANCE.NS
+2025-10-09 11:41:46,574 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for RELIANCE.NS
+2025-10-09 11:41:46,934 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-10-09 11:41:46,935 | INFO | __main__:prepare_training_data:101 - Data prepared for RELIANCE.NS: 1239 samples
+2025-10-09 11:41:46,935 | INFO | __main__:prepare_training_data:79 - Fetching data for TCS.NS...
+2025-10-09 11:41:46,951 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for TCS.NS
+2025-10-09 11:41:46,953 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for TCS.NS
+2025-10-09 11:41:47,323 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-10-09 11:41:47,324 | INFO | __main__:prepare_training_data:101 - Data prepared for TCS.NS: 1239 samples
+2025-10-09 11:41:47,324 | INFO | __main__:prepare_training_data:107 - Training data prepared for 3 symbols
+2025-10-09 11:41:47,324 | INFO | __main__:train_xgboost_model:111 - Training XGBoost model...
+2025-10-09 11:41:47,375 | INFO | src.models.xgboost_model:_select_features:255 - Converted fundamental feature current_ratio to numeric
+2025-10-09 11:41:47,380 | INFO | src.models.xgboost_model:_select_features:255 - Converted fundamental feature quick_ratio to numeric
+2025-10-09 11:41:47,383 | INFO | src.models.xgboost_model:_select_features:255 - Converted fundamental feature roe to numeric
+2025-10-09 11:41:47,385 | INFO | src.models.xgboost_model:_select_features:255 - Converted fundamental feature roi to numeric
+2025-10-09 11:41:47,457 | INFO | src.models.xgboost_model:prepare_features:122 - Prepared 142 features for 1238 samples
+2025-10-09 11:41:47,458 | INFO | __main__:train_xgboost_model:127 - Prepared 1238 samples for TATAMOTORS.NS
+2025-10-09 11:41:47,489 | INFO | src.models.xgboost_model:_select_features:255 - Converted fundamental feature current_ratio to numeric
+2025-10-09 11:41:47,492 | INFO | src.models.xgboost_model:_select_features:255 - Converted fundamental feature quick_ratio to numeric
+2025-10-09 11:41:47,493 | INFO | src.models.xgboost_model:_select_features:255 - Converted fundamental feature roe to numeric
+2025-10-09 11:41:47,499 | INFO | src.models.xgboost_model:_select_features:255 - Converted fundamental feature roi to numeric
+2025-10-09 11:41:47,574 | INFO | src.models.xgboost_model:prepare_features:122 - Prepared 142 features for 1238 samples
+2025-10-09 11:41:47,575 | INFO | __main__:train_xgboost_model:127 - Prepared 1238 samples for RELIANCE.NS
+2025-10-09 11:41:47,633 | INFO | src.models.xgboost_model:_select_features:255 - Converted fundamental feature roi to numeric
+2025-10-09 11:41:47,687 | INFO | src.models.xgboost_model:prepare_features:122 - Prepared 142 features for 1238 samples
+2025-10-09 11:41:47,688 | INFO | __main__:train_xgboost_model:127 - Prepared 1238 samples for TCS.NS
+2025-10-09 11:41:47,694 | INFO | __main__:train_xgboost_model:138 - Combined training data: 3714 samples
+2025-10-09 11:41:47,694 | INFO | src.models.xgboost_model:train:306 - Starting XGBoost model training...
+2025-10-09 11:41:55,186 | INFO | src.models.xgboost_model:save_model:515 - Model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\xgboost_model.pkl
+2025-10-09 11:41:55,187 | INFO | src.models.xgboost_model:train:358 - XGBoost model training completed successfully
+2025-10-09 11:41:55,188 | INFO | __main__:train_xgboost_model:144 - XGBoost model training completed
+2025-10-09 11:41:55,188 | INFO | __main__:train_xgboost_model:145 - Train MAE: 0.0003
+2025-10-09 11:41:55,189 | INFO | __main__:train_xgboost_model:146 - Validation MAE: 0.0061
+2025-10-09 11:41:55,189 | INFO | __main__:train_xgboost_model:147 - Test MAE: 0.0064
+2025-10-09 11:41:55,194 | INFO | __main__:train_informer_model:155 - Training Informer model...
+2025-10-09 11:41:55,194 | INFO | src.models.informer_model:train:273 - Starting Informer model training...
+2025-10-09 11:41:55,202 | INFO | src.models.informer_model:prepare_data:231 - Prepared 1120 sequences for Informer training
+2025-10-09 11:43:16,658 | INFO | src.models.informer_model:save_model:521 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-10-09 11:44:29,423 | INFO | src.models.informer_model:save_model:521 - Informer model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\informer_model.pth
+2025-10-09 11:54:45,995 | INFO | src.models.informer_model:train:364 - Epoch 10/100, Train Loss: 0.056109, Val Loss: 0.183383
+2025-10-09 11:57:23,719 | INFO | src.models.informer_model:train:360 - Early stopping at epoch 12
+2025-10-09 11:57:23,886 | INFO | src.models.informer_model:load_model:537 - Informer model loaded successfully
+2025-10-09 11:57:23,896 | INFO | src.models.informer_model:load_model:541 - Informer scaler loaded successfully
+2025-10-09 11:57:23,897 | INFO | src.models.informer_model:load_model:545 - Informer config loaded successfully
+2025-10-09 11:57:24,013 | ERROR | src.models.informer_model:_evaluate_model:424 - Error evaluating model: The size of tensor a (896) must match the size of tensor b (96) at non-singleton dimension 0
+2025-10-09 11:57:24,031 | ERROR | src.models.informer_model:_evaluate_model:424 - Error evaluating model: The size of tensor a (224) must match the size of tensor b (96) at non-singleton dimension 0
+2025-10-09 11:57:24,087 | INFO | src.models.informer_model:train:374 - Informer model training completed successfully
+2025-10-09 11:57:24,090 | INFO | __main__:train_informer_model:166 - Informer model training completed
+2025-10-09 11:57:24,091 | INFO | __main__:train_informer_model:167 - Train MAE: 0.0000
+2025-10-09 11:57:24,091 | INFO | __main__:train_informer_model:168 - Validation MAE: 0.0000
+2025-10-09 11:57:24,092 | INFO | __main__:train_sentiment_model:176 - Training sentiment analysis model...
+2025-10-09 11:57:24,095 | INFO | src.data.news_scraper:scrape_all_sources:98 - Scraping news from cnbc
+2025-10-09 11:57:25,276 | INFO | src.data.news_scraper:scrape_all_sources:101 - Scraped 0 articles from cnbc
+2025-10-09 11:57:27,277 | INFO | src.data.news_scraper:scrape_all_sources:98 - Scraping news from moneycontrol
+2025-10-09 11:57:30,804 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.moneycontrol.com/news/business/earnings/tcs-q2-results-2025-live-updates-tata-consultancy-services-q2-earnings-dividend-share-price-today-oct-9-liveblog-13606091.html
+2025-10-09 11:57:30,911 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.moneycontrol.com/news/videos/business/markets/canara-robeco-amc-s-rs-1326-cr-ipo-kicks-off-management-shares-growth-plans-ipo-watch-live-13605893.html
+2025-10-09 11:57:43,764 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.moneycontrol.com/news/videos/business/markets/live-can-nifty-hold-above-25-000-as-tcs-begins-q2-results-opening-bell-13605567.html
+2025-10-09 11:57:43,765 | INFO | src.data.news_scraper:scrape_all_sources:101 - Scraped 11 articles from moneycontrol
+2025-10-09 11:57:45,765 | INFO | src.data.news_scraper:scrape_all_sources:98 - Scraping news from mint
+2025-10-09 11:57:46,215 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/ipo/13100-return-canara-bank-to-make-mind-boggling-gain-on-rs-690-crore-stake-sale-in-canara-robeco-ipo-11759990276443.html
+2025-10-09 11:57:46,300 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/stock-market-news/maruti-suzuki-to-report-its-q2-results-2025-on-this-date-11759989135521.html
+2025-10-09 11:57:46,391 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/stock-market-news/tcs-q2-results-2025-live-updates-tcs-q2-earnings-tcs-dividend-tcs-share-price-tcs-q2-profit-trump-tariffs-h1b-visa-fee-11759979982532.html
+2025-10-09 11:57:46,485 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/ipo/canara-robeco-ipo-gmp-canara-robeco-ipo-date-canara-robeco-ipo-review-canara-robeco-amc-ipo-gmp-canara-robeco-ipo-11759978121295.html
+2025-10-09 11:57:46,573 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/stock-market-news/spicejet-share-price-skyrockets-13-after-this-flight-update-do-you-own-11759988821552.html
+2025-10-09 11:57:46,715 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/market-stats
+2025-10-09 11:57:46,853 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/mark-to-market
+2025-10-09 11:57:46,984 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/mark-to-market
+2025-10-09 11:57:55,040 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/stock-market-news
+2025-10-09 11:57:55,155 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/stock-market-news/rupees-quiet-spell-extends-courtesy-of-central-bank-11759990410345.html
+2025-10-09 11:57:55,247 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/stock-market-news/spicejet-share-price-skyrockets-13-after-this-flight-update-do-you-own-11759988821552.html
+2025-10-09 11:57:55,325 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/stock-market-news/maruti-suzuki-to-report-its-q2-results-2025-on-this-date-11759989135521.html
+2025-10-09 11:57:55,453 | WARNING | src.data.news_scraper:_scrape_article_content:267 - No content found for article: https://www.livemint.com/market/stock-market-news/tcs-q2-results-2025-today-is-it-the-right-time-to-buy-it-stock-ahead-of-earnings-experts-weigh-in-11759986135340.html
+2025-10-09 11:57:55,453 | INFO | src.data.news_scraper:scrape_all_sources:101 - Scraped 7 articles from mint
+2025-10-09 11:58:15,515 | INFO | src.data.news_scraper:save_articles:370 - Saved/updated 18 articles in the database
+2025-10-09 11:58:15,516 | INFO | __main__:train_sentiment_model:203 - Sentiment analysis completed for 18 articles
+2025-10-09 11:58:15,516 | INFO | __main__:train_sentiment_model:204 - Average sentiment: 0.170
+2025-10-09 11:58:15,517 | INFO | __main__:train_sentiment_model:205 - Positive articles: 11
+2025-10-09 11:58:15,517 | INFO | __main__:train_sentiment_model:206 - Negative articles: 7
+2025-10-09 11:58:15,517 | INFO | __main__:setup_ensemble_model:217 - Setting up ensemble model...
+2025-10-09 11:58:15,552 | INFO | src.models.xgboost_model:load_model:525 - XGBoost model loaded successfully
+2025-10-09 11:58:15,554 | INFO | src.models.xgboost_model:load_model:529 - Scaler loaded successfully
+2025-10-09 11:58:15,556 | INFO | src.models.xgboost_model:load_model:533 - Label encoders loaded successfully
+2025-10-09 11:58:15,557 | INFO | src.models.xgboost_model:load_model:539 - Feature names loaded successfully: 139 features
+2025-10-09 11:58:15,710 | INFO | src.models.informer_model:load_model:537 - Informer model loaded successfully
+2025-10-09 11:58:15,711 | INFO | src.models.informer_model:load_model:541 - Informer scaler loaded successfully
+2025-10-09 11:58:15,712 | INFO | src.models.informer_model:load_model:545 - Informer config loaded successfully
+2025-10-09 11:58:15,713 | INFO | src.models.ensemble_model:save_model:548 - Ensemble model saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\ensemble_model.pkl
+2025-10-09 11:58:15,714 | INFO | __main__:setup_ensemble_model:227 - Ensemble model setup completed
+2025-10-09 11:58:15,714 | INFO | __main__:setup_shap_explainer:235 - Setting up SHAP explainer...
+2025-10-09 11:58:15,784 | ERROR | src.models.shap_explainer:_initialize_explainer:47 - Error initializing SHAP explainer: Your currently installed version of Keras is Keras 3, but this is not yet supported in Transformers. Please install the backwards-compatible tf-keras package with `pip install tf-keras`.
+2025-10-09 11:58:15,785 | INFO | __main__:setup_shap_explainer:244 - SHAP explainer setup completed
+2025-10-09 11:58:15,786 | INFO | __main__:evaluate_models:252 - Evaluating models...
+2025-10-09 11:58:15,786 | INFO | src.models.ensemble_model:predict:87 - Making ensemble prediction for TATAMOTORS.NS (short)
+2025-10-09 11:58:15,826 | INFO | src.data.yahoo_finance:fetch_ohlcv_data:103 - Using cached OHLCV data for TATAMOTORS.NS
+2025-10-09 11:58:16,197 | INFO | src.features.technical_indicators:calculate_all_indicators:76 - Successfully calculated technical indicators for 1239 rows
+2025-10-09 11:58:16,201 | INFO | src.data.yahoo_finance:fetch_fundamental_data:143 - Using cached fundamental data for TATAMOTORS.NS
+2025-10-09 11:58:16,206 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'adx_lag_1' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,206 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'adx_lag_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,207 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'adx_lag_2' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,207 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'adx_lag_3' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,208 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'adx_lag_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,210 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_lag_1' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,211 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_lag_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,212 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_lag_2' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,213 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_lag_3' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,217 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_lag_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,218 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_max_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,220 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_max_20' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,221 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_max_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,222 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_mean_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,224 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_mean_20' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,225 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_mean_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,227 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_min_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,229 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_min_20' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,229 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_min_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,232 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_std_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,233 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_std_20' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,233 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_std_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,245 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'log_return_10d' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,245 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'log_return_1d' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,247 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'log_return_20d' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,247 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'log_return_5d' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,250 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'macd_lag_1' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,251 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'macd_lag_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,252 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'macd_lag_2' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,253 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'macd_lag_3' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,257 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'macd_lag_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,268 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'return_10d' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,269 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'return_1d' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,272 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'return_20d' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,273 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'return_5d' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,279 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_lag_1' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,282 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_lag_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,282 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_lag_2' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,284 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_lag_3' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,286 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_lag_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,287 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_max_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,288 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_max_20' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,289 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_max_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,293 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_mean_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,295 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_mean_20' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,295 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_mean_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,296 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_min_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,298 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_min_20' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,301 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_min_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,301 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_std_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,302 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_std_20' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,304 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_std_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,311 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volatility_10d' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,312 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volatility_1d' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,314 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volatility_20d' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,317 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volatility_5d' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,321 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_lag_1' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,321 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_lag_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,322 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_lag_2' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,322 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_lag_3' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,323 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_lag_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,323 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_max_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,323 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_max_20' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,327 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_max_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,327 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_mean_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,329 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_mean_20' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,331 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_mean_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,331 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_min_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,331 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_min_20' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,332 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_min_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,334 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_std_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,335 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_std_20' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,338 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_std_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,357 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'adx_lag_1' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,360 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'adx_lag_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,361 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'adx_lag_2' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,362 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'adx_lag_3' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,364 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'adx_lag_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,369 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_lag_1' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,371 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_lag_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,372 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_lag_2' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,373 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_lag_3' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,373 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_lag_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,374 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_max_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,376 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_max_20' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,380 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_max_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,381 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_mean_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,381 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_mean_20' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,382 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_mean_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,383 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_min_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,384 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_min_20' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,384 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_min_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,389 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_std_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,389 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_std_20' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,390 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'close_std_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,399 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'log_return_10d' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,400 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'log_return_1d' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,400 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'log_return_20d' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,404 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'log_return_5d' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,405 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'macd_lag_1' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,406 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'macd_lag_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,406 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'macd_lag_2' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,407 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'macd_lag_3' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,410 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'macd_lag_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,418 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'return_10d' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,421 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'return_1d' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,421 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'return_20d' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,422 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'return_5d' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,423 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_lag_1' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,425 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_lag_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,428 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_lag_2' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,428 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_lag_3' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,429 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_lag_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,431 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_max_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,431 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_max_20' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,432 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_max_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,434 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_mean_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,435 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_mean_20' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,435 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_mean_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,437 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_min_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,438 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_min_20' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,439 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_min_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,440 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_std_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,443 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_std_20' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,444 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'rsi_std_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,454 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volatility_10d' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,455 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volatility_1d' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,457 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volatility_20d' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,458 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volatility_5d' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,464 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_lag_1' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,465 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_lag_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,467 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_lag_2' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,467 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_lag_3' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,468 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_lag_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,469 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_max_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,472 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_max_20' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,473 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_max_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,473 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_mean_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,474 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_mean_20' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,476 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_mean_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,479 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_min_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,480 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_min_20' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,481 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_min_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,485 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_std_10' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,488 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_std_20' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,489 | WARNING | src.models.xgboost_model:_prepare_prediction_features:425 - Feature 'volume_std_5' missing in prediction data, filling with 0.
+2025-10-09 11:58:16,520 | INFO | src.models.informer_model:prepare_data:231 - Prepared 1120 sequences for Informer training
+2025-10-09 11:58:30,021 | INFO | src.models.ensemble_model:predict:203 - Ensemble prediction completed for TATAMOTORS.NS: Strong Buy
+2025-10-09 11:58:30,022 | INFO | __main__:evaluate_models:261 - Sample prediction for TATAMOTORS.NS:
+2025-10-09 11:58:30,090 | INFO | __main__:evaluate_models:264 -   Price Change: 140.65%
+2025-10-09 11:58:30,091 | INFO | __main__:evaluate_models:265 -   Recommendation: Strong Buy
+2025-10-09 11:58:30,091 | INFO | __main__:evaluate_models:266 -   Confidence: 10.0%
+2025-10-09 11:58:30,091 | INFO | __main__:evaluate_models:267 -   Risk Level: Medium
+2025-10-09 11:58:30,092 | WARNING | src.models.shap_explainer:explain_prediction:62 - SHAP explainer not initialized or model missing; using fallback explanation
+2025-10-09 11:58:30,096 | INFO | __main__:evaluate_models:276 - SHAP explanation generated successfully
+2025-10-09 11:58:30,097 | INFO | __main__:evaluate_models:277 -   Top feature: macd_signal_type
+2025-10-09 11:58:30,097 | INFO | __main__:evaluate_models:278 -   Natural explanation: SHAP explainer not available. Showing basic feature importance....
+2025-10-09 11:58:30,098 | INFO | __main__:save_training_report:301 - Saving training report...
+2025-10-09 11:58:30,102 | INFO | __main__:save_training_report:327 - Training report saved to C:\Users\dhruv\OneDrive\Desktop\NEW_CURSOR_STOCK\models\training_report.json
+2025-10-09 11:58:30,103 | INFO | __main__:run_full_training:355 - Full training pipeline completed successfully!
+2025-10-09 11:58:30,103 | INFO | __main__:main:397 - Training completed successfully!
