@@ -79,7 +79,7 @@ class YahooFinanceData:
     def fetch_ohlcv_data(
         self, 
         symbol: str, 
-        period: str = "5y", 
+        period: str = "max", 
         interval: str = "1d",
         use_cache: bool = True
     ) -> pd.DataFrame:
@@ -164,7 +164,7 @@ class YahooFinanceData:
     def fetch_multiple_symbols(
         self, 
         symbols: List[str], 
-        period: str = "5y", 
+        period: str = "max", 
         interval: str = "1d"
     ) -> Dict[str, pd.DataFrame]:
         """
