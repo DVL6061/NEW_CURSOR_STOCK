@@ -317,3 +317,9 @@ For issues and questions:
 ---
 
 **Note**: This system is for educational and research purposes. Always verify predictions with multiple sources before making investment decisions.
+
+venv\Scripts\python.exe -c "import uvicorn; from src.backend.main import app; uvicorn.run(app, host='127.0.0.1', port=8001)"
+
+& c:/Users/dhruv/OneDrive/Desktop/NEW_CURSOR_STOCK/venv/Scripts/Activate.ps1   
+
+python.exe -m streamlit run src/frontend/app.py --server.port 8501 --server.address 127.0.0.1        
